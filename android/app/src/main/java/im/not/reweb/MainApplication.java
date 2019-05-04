@@ -1,4 +1,4 @@
-package com.reweb;
+package im.not.reweb;
 
 import android.app.Application;
 
