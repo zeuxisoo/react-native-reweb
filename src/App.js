@@ -11,8 +11,8 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import colors from './config/colors';
 
-import HomeScreen from './screens/Home/HomeScreen';
-import UrlCreateScreen from './screens/Url/CreateScreen';
+import HomeScreen from './screens/home/HomeScreen';
+import UrlCreateScreen from './screens/url/CreateScreen';
 
 //
 const AppNavigator = createStackNavigator({
