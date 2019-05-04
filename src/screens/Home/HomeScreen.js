@@ -1,17 +1,19 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
-import colors from '../../config/colors';
+import { View, Text } from 'react-native';
+import { MaterialHeaderButtons, Item } from '../../components/navbar/HeaderButton';
 
 class HomeScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
             title: "Home",
             headerRight: (
-                <Button
-                    title="Create"
-                    color={ colors.tertiary }
-                    onPress={ () => navigation.navigate('UrlCreateScreen') }
-                />
+                <MaterialHeaderButtons>
+                    <Item
+                        title="add"
+                        iconName="add"
+                        onPress={() => navigation.navigate('UrlCreateScreen')}
+                    />
+                </MaterialHeaderButtons>
             )
         }
     }
