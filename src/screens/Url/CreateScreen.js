@@ -1,18 +1,18 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class HomeScreen extends React.Component {
+class CreateScreen extends React.Component {
     static navigationOptions = {
-        title: "Home",
-    };
+        title: "Create Url"
+    }
 
     render() {
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <Text>Home Screen</Text>
+                <Text>Url Create Screen</Text>
             </View>
         )
     }
 }
 
-export default HomeScreen
+export default CreateScreen

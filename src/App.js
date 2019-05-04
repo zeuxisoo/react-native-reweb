@@ -9,20 +9,27 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import HomeScreen from './screens/HomeScreen';
+import colors from './config/colors';
+
+import HomeScreen from './screens/Home/HomeScreen';
+import UrlCreateScreen from './screens/Url/CreateScreen';
 
 //
 const AppNavigator = createStackNavigator({
     Home: HomeScreen,
+    UrlCreateScreen: UrlCreateScreen,
 },{
     initialRouteName: "Home",
     defaultNavigationOptions: {
         headerStyle: {
-            backgroundColor: '#9AD1C9',
+            backgroundColor: colors.primary,
         },
-        headerTintColor: '#464646',
+        headerTintColor: colors.secondary,
         headerTitleStyle: {
             fontWeight: 'bold',
+        },
+        headerBackTitleStyle: {
+            color: colors.secondary,
         },
     },
 });
