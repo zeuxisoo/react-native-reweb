@@ -15,7 +15,16 @@ import HomeScreen from './screens/HomeScreen';
 const AppNavigator = createStackNavigator({
     Home: HomeScreen,
 },{
-    initialRouteName: "Home"
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+        headerStyle: {
+            backgroundColor: '#9AD1C9',
+        },
+        headerTintColor: '#464646',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+        },
+    },
 });
 
 //
