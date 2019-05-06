@@ -4,23 +4,26 @@ import { HeaderButtons, HeaderButton } from 'react-navigation-header-buttons';
 
 import { colors } from '../../config';
 
-const MaterialHeaderButton = props => (
+// not exports
+const HeaderMaterialButton = props => (
     <HeaderButton {...props} IconComponent={MaterialIcons} iconSize={23} color={colors.tertiary} />
 );
 
-const MaterialHeaderButtons = props => {
+// exports
+const HeaderMaterialButtons = props => {
     return (
         <HeaderButtons
-            HeaderButtonComponent={MaterialHeaderButton}
+            HeaderButtonComponent={HeaderMaterialButton}
             OverflowIcon={<MaterialIcons name="more-vert" size={23} color="white" />}
             {...props}
         />
     );
 };
 
-const Item = HeaderButtons.Item;
+const HeaderMaterialItem = HeaderMaterialButtons.Item;
 
+//
 export {
-    MaterialHeaderButtons,
-    Item,
+    HeaderMaterialButtons,
+    HeaderMaterialItem,
 };

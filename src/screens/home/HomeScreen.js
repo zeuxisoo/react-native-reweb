@@ -1,19 +1,17 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { MaterialHeaderButtons, Item } from '../../components/navbar/HeaderButton';
+import { HeaderMaterialButtons, HeaderMaterialItem } from '../../components/navbar';
 
 class HomeScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
             title: "Home",
             headerRight: (
-                <MaterialHeaderButtons>
-                    <Item
-                        title="add"
-                        iconName="add"
+                <HeaderMaterialButtons>
+                    <HeaderMaterialItem title="add" iconName="add"
                         onPress={() => navigation.navigate('UrlCreateScreen')}
                     />
-                </MaterialHeaderButtons>
+                </HeaderMaterialButtons>
             )
         }
     }
