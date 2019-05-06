@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { HeaderMaterialButtons, HeaderMaterialItem } from '../../components/navbar';
+import { HeaderMaterialButtons, HeaderMaterialItem } from '../../components/header';
 
 class HomeScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
