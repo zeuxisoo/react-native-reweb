@@ -12,7 +12,7 @@ const vogues = StyleSheet.create({
     },
 
     //
-    createSecondaryButton: {
+    secondaryButton: {
         borderRadius: 0,
         marginTop: 5,
         marginLeft: 0,
