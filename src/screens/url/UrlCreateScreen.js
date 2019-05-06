@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { Card } from 'react-native-elements';
 
 
 import { WebsiteInfoInput } from '../../components/input';
@@ -11,12 +10,45 @@ class UrlCreateScreen extends React.Component {
         title: "Create Url"
     }
 
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            name: "",
+            url : "",
+        };
+    }
+
+    //
+    handleNameChange(name) {
+        this.setState({ name: name });
+    }
+
+    handleUrlChange(url) {
+        this.setState({ url: url });
+    }
+
+    handleCreate() {
+        // TODO: save the create data
+    }
+
+    //
     render() {
         return (
             <Card title="Website Info">
-                <WebsiteInfoInput label="Name" placeholder="" />
-                <WebsiteInfoInput label="Url" placeholder="" multiline={true} numberOfLines={5} />
-                <SecondaryButton title="Create" />
+                <WebsiteInfoInput
+                    label="Name"
+                    placeholder="Site name"
+                    onChangeText={this.handleNameChange.bind(this)} />
+                <WebsiteInfoInput
+                    label="Url"
+                    placeholder="http://site.name"
+                    multiline={true}
+                    numberOfLines={5}
+                    onChangeText={this.handleUrlChange.bind(this)} />
+                <SecondaryButton
+                    title="Create"
+                    onPress={this.handleCreate.bind(this)} />
             </Card>
         )
     }
