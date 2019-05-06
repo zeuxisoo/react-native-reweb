@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import colors from './colors';
 
-const styles = StyleSheet.create({
+const vogues = StyleSheet.create({
     //
     inputContainerStyle: {
         paddingLeft: 0,
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default styles;
+export default vogues;

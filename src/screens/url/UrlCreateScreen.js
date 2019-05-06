@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 
-import configStyles from '../../config/styles';
+import { vogues } from '../../config';
 import { WebsiteInfoInput } from '../../components/input/WebsiteInfoInput';
 
 class UrlCreateScreen extends React.Component {
@@ -18,7 +18,7 @@ class UrlCreateScreen extends React.Component {
                     multiline={true}
                     numberOfLines={5} />
                 <Button
-                    buttonStyle={configStyles.createSecondaryButton}
+                    buttonStyle={vogues.createSecondaryButton}
                     title='Create' />
             </Card>
         )

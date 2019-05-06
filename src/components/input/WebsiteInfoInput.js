@@ -2,12 +2,11 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Input } from 'react-native-elements';
 
-import configColors from '../../config/colors';
-import configStyles from '../../config/styles';
+import { colors, vogues } from '../../config';
 
 const WebsiteInfoInput = props => (
     <Input
-        containerStyle={configStyles.inputContainerStyle}
+        containerStyle={vogues.inputContainerStyle}
         inputContainerStyle={styles.inputStyle}
         {...props} />
 );
@@ -17,7 +16,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         padding: 5,
         borderWidth: 1,
-        borderColor: configColors.lightTertiary,
+        borderColor: colors.lightTertiary,
         borderRadius: 5,
     }
 });

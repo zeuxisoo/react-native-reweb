@@ -1,8 +1,7 @@
 import React from 'react';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-import colors from './config/colors';
-
+import { colors } from './config';
 import { HomeScreen, UrlCreateScreen } from './screens';
 
 //
