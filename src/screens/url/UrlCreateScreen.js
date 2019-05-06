@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-class CreateScreen extends React.Component {
+class UrlCreateScreen extends React.Component {
     static navigationOptions = {
         title: "Create Url"
     }
@@ -15,4 +15,6 @@ class CreateScreen extends React.Component {
     }
 }
 
-export default CreateScreen
+export {
+    UrlCreateScreen
+};

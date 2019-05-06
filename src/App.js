@@ -3,8 +3,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import colors from './config/colors';
 
-import HomeScreen from './screens/home/HomeScreen';
-import UrlCreateScreen from './screens/url/CreateScreen';
+import { HomeScreen, UrlCreateScreen } from './screens';
 
 //
 const AppNavigator = createStackNavigator({
