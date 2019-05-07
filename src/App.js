@@ -3,6 +3,10 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { colors } from './config';
 import { HomeScreen, UrlCreateScreen } from './screens';
+import DBHelper from './db/DBHelper';
+
+//
+(new DBHelper()).open();
 
 //
 const AppNavigator = createStackNavigator({
