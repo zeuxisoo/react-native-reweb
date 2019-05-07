@@ -6,4 +6,8 @@ export default schemas = [
         schemaVersion: 1,
         migration    : () => {}
     },
-]
+];
+
+export {
+    UrlSchema
+};

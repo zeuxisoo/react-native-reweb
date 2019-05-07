@@ -4,6 +4,8 @@ import { Card } from 'react-native-elements';
 import { WebsiteInfoInput } from '../../components/input';
 import { SecondaryButton } from '../../components/button';
 
+import { UrlModel } from '../../db/models';
+
 class UrlCreateScreen extends React.Component {
     static navigationOptions = {
         title: "Create Url"
@@ -28,8 +30,22 @@ class UrlCreateScreen extends React.Component {
     }
 
     handleCreate() {
-        // TODO: save the create data
-        // UrlModel.find(1);
+        try {
+            UrlModel.create({
+                id  : UrlModel.id(),
+                name: this.state.name,
+                url : this.state.url,
+            });
+
+            this.setState({
+                name: "",
+                url : "",
+            });
+
+            alert("Url Created");
+        }catch(e) {
+            alert(e.message);
+        }
     }
 
     //
@@ -39,13 +55,17 @@ class UrlCreateScreen extends React.Component {
                 <WebsiteInfoInput
                     label="Name"
                     placeholder="Site name"
-                    onChangeText={this.handleNameChange.bind(this)} />
+                    autoCapitalize="none"
+                    onChangeText={this.handleNameChange.bind(this)}
+                    value={this.state.name} />
                 <WebsiteInfoInput
                     label="Url"
                     placeholder="http://site.name"
                     multiline={true}
                     numberOfLines={5}
-                    onChangeText={this.handleUrlChange.bind(this)} />
+                    autoCapitalize="none"
+                    onChangeText={this.handleUrlChange.bind(this)}
+                    value={this.state.url} />
                 <SecondaryButton
                     title="Create"
                     onPress={this.handleCreate.bind(this)} />

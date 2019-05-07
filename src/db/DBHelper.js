@@ -5,7 +5,7 @@ import schemas from './schemas';
 
 export default class DBHelper {
 
-    static instance = null;
+    static realm = null;
 
     constructor(options = {}) {
         this.options = _.merge({
@@ -29,15 +29,15 @@ export default class DBHelper {
     }
 
     open() {
-        if (DBHelper.instance === null) {
-            DBHelper.instance= Realm.open(_.merge(schemas[schemas.length - 1], this.options));
+        if (DBHelper.realm === null) {
+            DBHelper.realm = new Realm(_.merge(schemas[schemas.length - 1], this.options));
         }
 
-        return DBHelper.instance;
+        return DBHelper.realm;
     }
 
-    instance() {
-        return DBHelper.instance;
+    static connection() {
+        return DBHelper.realm;
     }
 
 }
