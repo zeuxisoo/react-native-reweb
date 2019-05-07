@@ -1,4 +1,4 @@
-export const UrlSchema = {
+export default UrlSchema = {
     name: "urls",
     primaryKey: "id",
     properties: {

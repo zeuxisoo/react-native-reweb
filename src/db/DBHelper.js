@@ -1,7 +1,7 @@
 import Realm from 'realm';
 import _ from 'lodash';
 
-import { UrlSchema } from './schemas';
+import schemas from './schemas';
 
 export default class DBHelper {
 
@@ -9,15 +9,28 @@ export default class DBHelper {
 
     constructor(options = {}) {
         this.options = _.merge({
-            schema       : [ UrlSchema ],
-            schemaVersion: 1,
-            path         : "reweb.realm",
+            path: "reweb.realm",
         }, options);
+
+        this.migrate();
+    }
+
+    migrate() {
+        // Get current realm database schema version
+        let nextSchemaIndex = Realm.schemaVersion(this.options.path);
+
+        // If current realm database schema version is smaller than schema list size, do migration
+        while (nextSchemaIndex < schemas.length) {
+            const currentSchema = schemas[nextSchemaIndex++];
+            const migratedRealm = new Realm(_.merge(currentSchema, this.options));
+
+            migratedRealm.close();
+        }
     }
 
     open() {
         if (DBHelper.instance === null) {
-            DBHelper.instance= Realm.open(this.options);
+            DBHelper.instance= Realm.open(_.merge(schemas[schemas.length - 1], this.options));
         }
 
         return DBHelper.instance;
