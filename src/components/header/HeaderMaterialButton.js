@@ -1,6 +1,6 @@
 import React from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { HeaderButtons, HeaderButton } from 'react-navigation-header-buttons';
+import HeaderButtons, { HeaderButton, Item } from 'react-navigation-header-buttons';
 
 import { colors } from '../../config';
 
@@ -20,7 +20,7 @@ const HeaderMaterialButtons = props => {
     );
 };
 
-const HeaderMaterialItem = HeaderMaterialButtons.Item;
+const HeaderMaterialItem = Item;
 
 //
 export {
