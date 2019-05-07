@@ -29,7 +29,7 @@ export default class DBHelper {
     }
 
     open() {
-        if (DBHelper.realm === null) {
+        if (_.isNull(DBHelper.realm)) {
             DBHelper.realm = new Realm(_.merge(schemas[schemas.length - 1], this.options));
         }
 
