@@ -1,12 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Card } from 'react-native-elements';
+import { isEmpty } from 'validator';
 
 import { WebsiteInfoInput } from '../../components/input';
 import { SecondaryButton } from '../../components/button';
 
+import { alertError, alertSuccess, alertSystem } from '../../helper/alert';
+import { addWebsite } from '../../redux/actions/website';
 import { WebsiteModel } from '../../db/models';
 
-class WebsiteCreateScreen extends React.Component {
+class WebsiteCreateComponent extends React.Component {
     static navigationOptions = {
         title: "Create Website"
     }
@@ -30,21 +34,27 @@ class WebsiteCreateScreen extends React.Component {
     }
 
     handleCreate() {
-        try {
-            WebsiteModel.create({
-                id  : WebsiteModel.id(),
-                name: this.state.name,
-                url : this.state.url,
-            });
+        if (isEmpty(this.state.name) === true) {
+            alertError("Please enter name");
+        }else if (isEmpty(this.state.url) === true) {
+            alertError("Please enter url");
+        }else{
+            try {
+                this.props.addWebsite({
+                    id  : WebsiteModel.id(),
+                    name: this.state.name,
+                    url : this.state.url,
+                });
 
-            this.setState({
-                name: "",
-                url : "",
-            });
+                this.setState({
+                    name: "",
+                    url : "",
+                });
 
-            alert("Url Created");
-        }catch(e) {
-            alert(e.message);
+                alertSuccess("Website Created");
+            }catch(e) {
+                alertSystem(e.message);
+            }
         }
     }
 
@@ -73,6 +83,15 @@ class WebsiteCreateScreen extends React.Component {
         )
     }
 }
+
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = dispatch => ({
+    addWebsite: (website) => dispatch(addWebsite(website)),
+});
+
+const WebsiteCreateScreen = connect(mapStateToProps, mapDispatchToProps)(WebsiteCreateComponent);
 
 export {
     WebsiteCreateScreen
