@@ -8,7 +8,7 @@ class HomeScreen extends React.Component {
             title: "Home",
             headerRight: (
                 <HeaderMaterialButtons>
-                    <HeaderMaterialItem title="add" iconName="add" onPress={() => navigation.navigate('UrlCreateScreen')} />
+                    <HeaderMaterialItem title="add" iconName="add" onPress={() => navigation.navigate('WebsiteCreateScreen')} />
                 </HeaderMaterialButtons>
             )
         }

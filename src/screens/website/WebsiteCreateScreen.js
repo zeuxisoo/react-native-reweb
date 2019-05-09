@@ -4,11 +4,11 @@ import { Card } from 'react-native-elements';
 import { WebsiteInfoInput } from '../../components/input';
 import { SecondaryButton } from '../../components/button';
 
-import { UrlModel } from '../../db/models';
+import { WebsiteModel } from '../../db/models';
 
-class UrlCreateScreen extends React.Component {
+class WebsiteCreateScreen extends React.Component {
     static navigationOptions = {
-        title: "Create Url"
+        title: "Create Website"
     }
 
     constructor(props) {
@@ -31,8 +31,8 @@ class UrlCreateScreen extends React.Component {
 
     handleCreate() {
         try {
-            UrlModel.create({
-                id  : UrlModel.id(),
+            WebsiteModel.create({
+                id  : WebsiteModel.id(),
                 name: this.state.name,
                 url : this.state.url,
             });
@@ -75,5 +75,5 @@ class UrlCreateScreen extends React.Component {
 }
 
 export {
-    UrlCreateScreen
+    WebsiteCreateScreen
 };

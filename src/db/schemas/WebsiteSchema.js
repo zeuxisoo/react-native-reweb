@@ -1,5 +1,5 @@
-export default UrlSchema = {
-    name: "urls",
+export default WebsiteSchema = {
+    name: "websites",
     primaryKey: "id",
     properties: {
         id  : { type: "int", indexed: true },

@@ -1,13 +1,13 @@
-import UrlSchema from './UrlSchema';
+import WebsiteSchema from './WebsiteSchema';
 
 export default schemas = [
     {
-        schema       : [UrlSchema],
+        schema       : [WebsiteSchema],
         schemaVersion: 1,
         migration    : () => {}
     },
 ];
 
 export {
-    UrlSchema
+    WebsiteSchema
 };
