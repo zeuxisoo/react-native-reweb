@@ -24,4 +24,22 @@ export default class Model {
         }
     }
 
+    // Get all objects
+    static objects() {
+        try {
+            return DBHelper.connection().objects(this.schema.name);
+        }catch(e) {
+            throw e;
+        }
+    }
+
+    // Get all objects and convert to array
+    static all() {
+        try {
+            return Array.from(this.objects());
+        }catch(e) {
+            throw e;
+        }
+    }
+
 }

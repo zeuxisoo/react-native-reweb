@@ -9,10 +9,25 @@ function addedWebsite(website) {
     };
 }
 
+function fetchedWebsites(websites) {
+    return {
+        type    : types.SET_WEBSITES,
+        websites: websites,
+    }
+}
+
 export function addWebsite(website) {
     return (dispatch, getState) => {
         WebsiteModel.create(website);
 
         dispatch(addedWebsite(website));
+    }
+}
+
+export function fetchWebsites() {
+    return (dispatch, getState) => {
+        const websites = WebsiteModel.all();
+
+        dispatch(fetchedWebsites(websites));
     }
 }
