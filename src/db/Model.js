@@ -4,6 +4,10 @@ import DBHelper from './DBHelper';
 
 export default class Model {
 
+    static primaryKey = "id";
+
+    static incrementing = true;
+
     static schema = {};
 
     // Get the primary id
@@ -16,6 +20,10 @@ export default class Model {
     // Create single item
     static create(item) {
         try {
+            if (this.incrementing === true) {
+                item[this.primaryKey] = this.id();
+            }
+
             DBHelper.connection().write(() => {
                 DBHelper.connection().create(this.schema.name, item);
             });

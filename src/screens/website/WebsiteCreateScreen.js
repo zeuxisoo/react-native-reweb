@@ -41,7 +41,6 @@ class WebsiteCreateComponent extends React.Component {
         }else{
             try {
                 this.props.addWebsite({
-                    id  : WebsiteModel.id(),
                     name: this.state.name,
                     url : this.state.url,
                 });
