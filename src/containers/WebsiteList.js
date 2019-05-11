@@ -8,7 +8,13 @@ import { fetchWebsites } from '../redux/actions/website';
 class WebsiteListContainer extends React.Component {
 
     componentDidMount() {
-        this.props.fetchWebsites()
+        this.willFocusListener = this.props.navigation.addListener("willFocus", () => {
+            this.props.fetchWebsites()
+        });
+    }
+
+    componentWillUnmount() {
+        this.willFocusListener.remove();
     }
 
     renderItem(item) {

@@ -25,7 +25,7 @@ class HomeScreen extends React.Component {
 
     render() {
         return (
-            <WebsiteList onItemPress={(website) => this.handleItemPress(website)} />
+            <WebsiteList navigation={this.props.navigation} onItemPress={(website) => this.handleItemPress(website)} />
         );
     }
 }
