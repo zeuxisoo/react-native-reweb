@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Input } from 'react-native-elements';
 
-import { colors, vogues } from '../../config';
+import { colors, vogues } from '../config';
 
 const WebsiteInfoInput = props => (
     <Input

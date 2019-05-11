@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 import { Card } from 'react-native-elements';
 
 import { fetchWebsites } from '../../redux/actions/website';
-import { HeaderMaterialButtons, HeaderMaterialItem } from '../../components/header';
-import { TouchableButton } from '../../components/button';
-import { CenterView } from '../../components/view';
+import {
+    HeaderMaterialButtons,
+    HeaderMaterialItem,
+    TouchableButton,
+    CenterView
+} from '../../components';
 
 class HomeComponent extends React.Component {
     static navigationOptions = ({ navigation }) => {

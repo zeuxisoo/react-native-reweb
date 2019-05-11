@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import { Card } from 'react-native-elements';
 import { isEmpty } from 'validator';
 
-import { WebsiteInfoInput } from '../../components/input';
-import { SecondaryButton } from '../../components/button';
-
+import { WebsiteInfoInput, SecondaryButton } from '../../components';
 import { alertError, alertSuccess, alertSystem } from '../../helper/alert';
 import { addWebsite } from '../../redux/actions/website';
-import { WebsiteModel } from '../../db/models';
 
 class WebsiteCreateComponent extends React.Component {
     static navigationOptions = {
