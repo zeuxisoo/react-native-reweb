@@ -41,10 +41,10 @@ export default class Model {
         }
     }
 
-    // Get all objects and convert to array
+    // Get all objects by desc order and convert to array
     static all() {
         try {
-            return Array.from(this.objects());
+            return Array.from(this.objects().sorted("id", true));
         }catch(e) {
             throw e;
         }
