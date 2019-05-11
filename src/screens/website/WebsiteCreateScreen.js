@@ -4,7 +4,7 @@ import { Card } from 'react-native-elements';
 import { isEmpty } from 'validator';
 
 import { WebsiteInfoInput, SecondaryButton } from '../../components';
-import { alertError, alertSuccess, alertSystem } from '../../helper/alert';
+import { alertError, alertSuccess, alertSystem } from '../../helpers/alert';
 import { addWebsite } from '../../redux/actions/website';
 
 class WebsiteCreateComponent extends React.Component {
