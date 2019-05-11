@@ -1,30 +1,50 @@
-import { ADD_WEBSITE, SET_WEBSITES } from '../types';
+import * as types from '../types';
 
-const initialState = {
-    websites : [],
+const createState = {
+    isLoading: false,
+    websites : {},
 };
 
-function create(state = initialState.websites, action) {
+const allState = {
+    isLoading: false,
+    websites : [],
+}
+
+function create(state = createState, action) {
     switch(action.type) {
-        case ADD_WEBSITE:
-            return [ ...state, action.website ];
+        case types.ADD_WEBSITE:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case types.ADD_WEBSITE_SUCCESS:
+            return {
+                isLoading: false,
+                websites : action.website,
+            }
         default:
             return state;
     }
 }
 
-function all(state = initialState.websites, action) {
+function all(state = allState, action) {
     switch(action.type) {
-        case SET_WEBSITES:
-            return action.websites;
+        case types.SET_WEBSITES:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case types.SET_WEBSITES_SUCCESS:
+            return {
+                isLoading: false,
+                websites : action.websites,
+            }
         default:
             return state;
     }
 }
 
-export default function(state = initialState, action) {
-    return {
-        create: create(state.websites, action),
-        all   : all(state.websites, action),
-    }
+export {
+    create,
+    all,
 };
