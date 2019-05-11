@@ -67,7 +67,8 @@ class HomeComponent extends React.Component {
                     data={this.props.websites}
                     keyExtractor={(item, index) => `website-${item.id}`}
                     renderItem={({ item }) => this.renderItem(item)}
-                    refreshing={this.state.loading} />
+                    refreshing={this.state.loading}
+                    bounces={false} />
             </View>
         );
     }
