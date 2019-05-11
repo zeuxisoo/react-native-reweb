@@ -5,6 +5,7 @@ import { Card } from 'react-native-elements';
 
 import { fetchWebsites } from '../../redux/actions/website';
 import { HeaderMaterialButtons, HeaderMaterialItem } from '../../components/header';
+import { TouchableButton } from '../../components/button';
 import { CenterView } from '../../components/view';
 
 class HomeComponent extends React.Component {
@@ -39,12 +40,19 @@ class HomeComponent extends React.Component {
         this.setState({ loading: false });
     }
 
+    handleRenderItemPress(item) {
+        alert("click");
+        console.log(item);
+    }
+
     renderItem(item) {
         return (
-            <Card>
-                <Text>{item.name}</Text>
-                <Text>{item.url}</Text>
-            </Card>
+            <TouchableButton onPress={this.handleRenderItemPress.bind(this, item)}>
+                <Card>
+                    <Text>{item.name}</Text>
+                    <Text>{item.url}</Text>
+                </Card>
+            </TouchableButton>
         )
     }
 
