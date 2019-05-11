@@ -2,9 +2,9 @@ import * as types from '../types';
 
 import { WebsiteModel } from '../../db/models';
 
-function addedWebsite(website) {
+function createdWebsite(website) {
     return {
-        type   : types.ADD_WEBSITE,
+        type   : types.ADD_WEBSITE_SUCCESS,
         website: website,
     };
 }
@@ -16,11 +16,13 @@ function fetchedWebsites(websites) {
     }
 }
 
-export function addWebsite(website) {
+export function createWebsite(website) {
     return (dispatch, getState) => {
+        dispatch({ type: types.ADD_WEBSITE });
+
         WebsiteModel.create(website);
 
-        dispatch(addedWebsite(website));
+        dispatch(createdWebsite(website));
     }
 }
 
