@@ -25,7 +25,7 @@ class WebsiteListContainer extends React.Component {
 
     render() {
         if (this.props.isLoading === true) {
-            return <CenterView title="Loading..." />
+            return <CenterView text="Loading..." />
         }
 
         return (

@@ -6,7 +6,7 @@ const createState = {
 };
 
 const allState = {
-    isLoading: false,
+    isLoading: true,    // default true, show loading screen first
     websites : [],
 }
 
