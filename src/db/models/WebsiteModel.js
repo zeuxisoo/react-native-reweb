@@ -5,6 +5,11 @@ import { WebsiteSchema } from '../schemas';
 
 class WebsiteModel extends Model {
 
+    static sortBy = {
+        name: "id",
+        desc: true,
+    }
+
 }
 
 WebsiteModel.schema = WebsiteSchema;
