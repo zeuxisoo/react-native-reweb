@@ -19,17 +19,21 @@ export default class Model {
 
     // Create single item
     static create(item) {
-        try {
-            if (this.incrementing === true) {
-                item[this.primaryKey] = this.id();
-            }
+        return new Promise((resolve, reject) => {
+            try {
+                if (this.incrementing === true) {
+                    item[this.primaryKey] = this.id();
+                }
 
-            DBHelper.connection().write(() => {
-                DBHelper.connection().create(this.schema.name, item);
-            });
-        }catch(e) {
-            throw e;
-        }
+                DBHelper.connection().write(() => {
+                    const obj = DBHelper.connection().create(this.schema.name, item);
+
+                    resolve(obj);
+                });
+            }catch(e) {
+                reject(e);
+            }
+        });
     }
 
     // Get all objects
@@ -43,11 +47,13 @@ export default class Model {
 
     // Get all objects by desc order and convert to array
     static all() {
-        try {
-            return Array.from(this.objects().sorted("id", true));
-        }catch(e) {
-            throw e;
-        }
+        return new Promise((resolve, reject) => {
+            try {
+                resolve(Array.from(this.objects().sorted("id", true)));
+            }catch(e) {
+                reject(e);
+            }
+        });
     }
 
 }

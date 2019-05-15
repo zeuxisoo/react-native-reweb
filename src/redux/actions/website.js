@@ -20,9 +20,11 @@ export function createWebsite(website) {
     return (dispatch, getState) => {
         dispatch({ type: types.ADD_WEBSITE });
 
-        WebsiteModel.create(website);
-
-        dispatch(createdWebsite(website));
+        WebsiteModel
+            .create(website)
+            .then(websiteObject => {
+                dispatch(createdWebsite(websiteObject));
+            });
     }
 }
 
@@ -30,8 +32,10 @@ export function fetchWebsites() {
     return (dispatch, getState) => {
         dispatch({ type: types.SET_WEBSITES });
 
-        const websites = WebsiteModel.all();
-
-        dispatch(fetchedWebsites(websites));
+        WebsiteModel
+            .all()
+            .then(websites => {
+                dispatch(fetchedWebsites(websites));
+            });
     }
 }
