@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, InteractionManager } from 'react-native';
 import { connect } from 'react-redux';
 
 import { CenterView, WebsiteListItem } from '../components';
@@ -9,7 +9,9 @@ class WebsiteListContainer extends React.Component {
 
     componentDidMount() {
         this.willFocusListener = this.props.navigation.addListener("willFocus", () => {
-            this.props.fetchWebsites()
+            InteractionManager.runAfterInteractions(() => {
+                this.props.fetchWebsites()
+            });
         });
     }
 
