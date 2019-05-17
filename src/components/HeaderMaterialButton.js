@@ -6,7 +6,7 @@ import { colors } from '../config';
 
 // not exports
 const HeaderMaterialButton = props => (
-    <HeaderButton {...props} IconComponent={MaterialIcons} iconSize={23} color={colors.tertiary} />
+    <HeaderButton IconComponent={MaterialIcons} iconSize={23} color={colors.tertiary} {...props} />
 );
 
 // exports

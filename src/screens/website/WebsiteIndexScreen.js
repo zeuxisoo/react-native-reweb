@@ -2,10 +2,11 @@ import React from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, Platform } from 'react-native';
 import { WebView } from 'react-native-webview';
 
-import { HeaderTitle } from '../../components';
+import { HeaderTitle, HeaderTextButton } from '../../components';
 
 class WebsiteIndexScreen extends React.Component {
     static navigationOptions = ({ navigation }) =>({
+        headerLeft: <HeaderTextButton text="Done" onPress={() => navigation.goBack()} />,
         headerTitle: <HeaderTitle website={navigation.getParam('website', {})} />,
     });
 

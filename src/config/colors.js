@@ -4,6 +4,8 @@ const colors = {
     tertiary : "#787878",
 
     lightTertiary: "#E1E1E1",
+
+    darkPrimary: "#415f7f",
 }
 
 export default colors;

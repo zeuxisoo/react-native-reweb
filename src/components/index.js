@@ -5,3 +5,4 @@ export * from './CenterView';
 export * from './TouchableButton';
 export * from './WebsiteListItem';
 export * from './HeaderTitle';
+export * from './HeaderTextButton';
