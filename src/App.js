@@ -3,7 +3,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
 
 import { colors } from './config';
-import { HomeScreen, WebsiteCreateScreen } from './screens';
+import { HomeScreen, WebsiteCreateScreen, WebsiteIndexScreen } from './screens';
 import store from './redux/store';
 import DBHelper from './db/DBHelper';
 
@@ -14,6 +14,7 @@ import DBHelper from './db/DBHelper';
 const AppNavigator = createStackNavigator({
     Home: HomeScreen,
     WebsiteCreateScreen: WebsiteCreateScreen,
+    WebsiteIndexScreen: WebsiteIndexScreen,
 },{
     initialRouteName: "Home",
     defaultNavigationOptions: {

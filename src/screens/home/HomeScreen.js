@@ -20,7 +20,9 @@ class HomeScreen extends React.Component {
     }
 
     handleItemPress(website) {
-        alert(website.name);
+        this.props.navigation.navigate('WebsiteIndexScreen', {
+            website: website,
+        });
     }
 
     render() {
