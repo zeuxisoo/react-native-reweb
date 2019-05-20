@@ -11,10 +11,33 @@ class WebsiteIndexScreen extends React.Component {
         header: null,
     });
 
-    renderLoadingView() {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isLoading: true,
+        };
+    }
+
+    // Disable the default loading view
+    handleRenderLoading() {
         return (
-            <ActivityIndicator color="#0088FF" size="large" style={styles.loadingViewContainer} />
+            <View></View>
         )
+    }
+
+    // Show the custom loading when page load start
+    handleOnLoadStart() {
+        this.setState({
+            isLoading: true,
+        });
+    }
+
+    // Hide the custom loading when page loaded
+    handleOnLoad() {
+        this.setState({
+            isLoading: false,
+        });
     }
 
     render() {
@@ -37,14 +60,26 @@ class WebsiteIndexScreen extends React.Component {
                         </View>
                     </View>
                 </SafeAreaView>
-                <WebView
-                    ref={webview => {this.browser = webview;}}
-                    style={styles.webViewContainer}
-                    source={{uri: website.url}}
-                    renderLoading={this.renderLoadingView}
-                    startInLoadingState={true}
-                    domStorageEnabled={true}
-                    javaScriptEnabled={true} />
+                <View style={styles.webViewContainer}>
+                    <WebView
+                        ref={webview => {this.browser = webview;}}
+                        style={styles.browserContainer}
+                        source={{uri: website.url}}
+                        domStorageEnabled={true}
+                        javaScriptEnabled={true}
+                        renderLoading={this.handleRenderLoading}
+                        onLoadStart={() => this.handleOnLoadStart()}
+                        onLoad={() => this.handleOnLoad()} />
+                    {
+                        this.state.isLoading === true
+                        ?
+                            <View style={styles.loadingViewContainer}>
+                                <ActivityIndicator color={colors.primary} size="large" />
+                            </View>
+                        :
+                            null
+                    }
+                </View>
                 <SafeAreaView style={styles.safeContainer}>
                     <View style={styles.footerContainer}>
                         <ElementButton
@@ -104,11 +139,15 @@ const styles = StyleSheet.create({
     },
     webViewContainer: {
         flex: 1,
-        backgroundColor: 'rgba(255,255,255,0.8)',
+        justifyContent: 'center',
+    },
+    browserContainer: {
     },
     loadingViewContainer: {
-        flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf:'center',
+        position: 'absolute',
     },
     footerContainer: {
         flexDirection: 'row',
