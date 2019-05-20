@@ -14,8 +14,11 @@ class WebsiteIndexScreen extends React.Component {
     constructor(props) {
         super(props);
 
+        this.browser = null,
+
         this.state = {
             isLoading: true,
+            isBrowserAutoRefreshEnabled: false,
         };
     }
 
@@ -37,6 +40,25 @@ class WebsiteIndexScreen extends React.Component {
     handleOnLoad() {
         this.setState({
             isLoading: false,
+        });
+
+        if (this.state.isBrowserAutoRefreshEnabled === true) {
+            this.browser.reload();
+        }
+    }
+
+    //
+    enableBrowserAutoRefresh() {
+        this.setState({
+            isBrowserAutoRefreshEnabled: true,
+        });
+
+        this.browser.reload();
+    }
+
+    disableBrowserAutoRefresh() {
+        this.setState({
+            isBrowserAutoRefreshEnabled: false,
         });
     }
 
@@ -102,16 +124,31 @@ class WebsiteIndexScreen extends React.Component {
                             containerStyle={styles.footerButtonContainer}
                             buttonStyle={styles.footerButtonStyle}
                             onPress={() => this.browser.goForward()} />
-                        <ElementButton
-                            icon={
-                                <Icon
-                                    name="refresh"
-                                    size={15}
-                                    color={colors.secondary} />
-                            }
-                            containerStyle={styles.footerButtonContainer}
-                            buttonStyle={styles.footerButtonStyle}
-                            onPress={() => this.browser.reload()} />
+                        {
+                            this.state.isBrowserAutoRefreshEnabled === true
+                            ?
+                                <ElementButton
+                                    icon={
+                                        <Icon
+                                            name="stop"
+                                            size={15}
+                                            color={colors.lightTertiary} />
+                                    }
+                                    containerStyle={styles.footerButtonContainer}
+                                    buttonStyle={styles.footerButtonStyle}
+                                    onPress={() => this.disableBrowserAutoRefresh()} />
+                            :
+                                <ElementButton
+                                    icon={
+                                        <Icon
+                                            name="refresh"
+                                            size={15}
+                                            color={colors.secondary} />
+                                    }
+                                    containerStyle={styles.footerButtonContainer}
+                                    buttonStyle={styles.footerButtonStyle}
+                                    onPress={() => this.enableBrowserAutoRefresh()} />
+                        }
                     </View>
                 </SafeAreaView>
             </View>
