@@ -8,6 +8,9 @@ import store from './redux/store';
 import DBHelper from './db/DBHelper';
 
 //
+console.disableYellowBox = true;
+
+//
 (new DBHelper()).open();
 
 //
