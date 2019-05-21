@@ -1,11 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, ActivityIndicator } from 'react-native';
-import { WebView } from 'react-native-webview';
+import { View, StyleSheet } from 'react-native';
 
-
-import { colors } from '../config';
 import { BrowserHeader } from './BrowserHeader';
 import { BrowserFooter } from './BrowserFooter';
+import { BrowserBody } from './BrowserBody';
 
 class BrowserUI extends React.PureComponent {
     constructor(props) {
@@ -17,13 +15,6 @@ class BrowserUI extends React.PureComponent {
             isLoading: true,
             isBrowserAutoRefreshEnabled: false,
         };
-    }
-
-    // Disable the default loading view
-    handleRenderLoading() {
-        return (
-            <View></View>
-        )
     }
 
     // Show the custom loading when page load start
@@ -71,26 +62,12 @@ class BrowserUI extends React.PureComponent {
                 <BrowserHeader
                     website={website}
                     onDonePress={() => navigation.goBack()} />
-                <View style={styles.webViewContainer}>
-                    <WebView
-                        ref={webview => {this.browser = webview;}}
-                        style={styles.browserContainer}
-                        source={{uri: website.url}}
-                        domStorageEnabled={true}
-                        javaScriptEnabled={true}
-                        renderLoading={this.handleRenderLoading}
-                        onLoadStart={() => this.handleOnLoadStart()}
-                        onLoad={() => this.handleOnLoad()} />
-                    {
-                        this.state.isLoading === true
-                        ?
-                            <View style={styles.loadingViewContainer}>
-                                <ActivityIndicator color={colors.primary} size="large" />
-                            </View>
-                        :
-                            null
-                    }
-                </View>
+                <BrowserBody
+                    website={website}
+                    isLoading={this.state.isLoading}
+                    onRef={website => this.browser = website}
+                    onLoadStart={() => this.handleOnLoadStart()}
+                    onLoad={() => this.handleOnLoad()} />
                 <BrowserFooter
                     isBrowserAutoRefreshEnabled={this.state.isBrowserAutoRefreshEnabled}
                     onBackPress={() => this.browser.goBack()}
@@ -105,18 +82,6 @@ class BrowserUI extends React.PureComponent {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-    },
-    webViewContainer: {
-        flex: 1,
-        justifyContent: 'center',
-    },
-    browserContainer: {
-    },
-    loadingViewContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf:'center',
-        position: 'absolute',
     },
 });
 
