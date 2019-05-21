@@ -5,6 +5,7 @@ import { Button as ElementButton } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { colors } from '../config';
+import { BrowserHeader } from './BrowserHeader';
 
 class BrowserUI extends React.PureComponent {
     constructor(props) {
@@ -67,17 +68,7 @@ class BrowserUI extends React.PureComponent {
 
         return (
             <View style={styles.container}>
-                <SafeAreaView style={styles.safeContainer}>
-                    <View style={styles.headerContainer}>
-                        <View style={styles.doneButtonContainer}>
-                            <Button title="Done" color={colors.darkPrimary} onPress={() => navigation.goBack()} />
-                        </View>
-                        <View style={styles.addressBarContainer}>
-                            <Text style={styles.websiteName}>{website.name}</Text>
-                            <Text style={styles.websiteUrl}>{website.url}</Text>
-                        </View>
-                    </View>
-                </SafeAreaView>
+                <BrowserHeader website={website} />
                 <View style={styles.webViewContainer}>
                     <WebView
                         ref={webview => {this.browser = webview;}}
@@ -159,17 +150,7 @@ const styles = StyleSheet.create({
     safeContainer: {
         backgroundColor: colors.primary,
     },
-    headerContainer: {
-        flexDirection: 'row',
-        backgroundColor: colors.primary,
-    },
-    doneButtonContainer: {
-        alignItems: 'center',
-    },
-    addressBarContainer: {
-        flexDirection: 'column',
-        paddingLeft: 10,
-    },
+
     webViewContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -189,15 +170,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 
-    websiteName: {
-        color: colors.secondary,
-        fontWeight: 'bold',
-        paddingBottom: 3,
-    },
-    websiteUrl: {
-        color: colors.tertiary,
-        fontSize: 13,
-    },
+
 
     footerButtonStyle: {
         backgroundColor:colors.primary
