@@ -13,7 +13,7 @@ class BrowserHeader extends React.PureComponent {
             <BrowserSafeArea>
                 <View style={styles.container}>
                     <View style={styles.doneButtonContainer}>
-                        <Button title="Done" color={colors.darkPrimary} onPress={() => navigation.goBack()} />
+                        <Button title="Done" color={colors.darkPrimary} onPress={this.props.onDonePress} />
                     </View>
                     <View style={styles.addressBarContainer}>
                         <Text style={styles.websiteName}>{website.name}</Text>

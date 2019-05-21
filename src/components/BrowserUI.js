@@ -68,7 +68,9 @@ class BrowserUI extends React.PureComponent {
 
         return (
             <View style={styles.container}>
-                <BrowserHeader website={website} />
+                <BrowserHeader
+                    website={website}
+                    onDonePress={() => navigation.goBack()} />
                 <View style={styles.webViewContainer}>
                     <WebView
                         ref={webview => {this.browser = webview;}}
