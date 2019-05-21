@@ -11,7 +11,7 @@ class BrowserHeader extends React.PureComponent {
 
         return (
             <BrowserSafeArea>
-                <View style={styles.headerContainer}>
+                <View style={styles.container}>
                     <View style={styles.doneButtonContainer}>
                         <Button title="Done" color={colors.darkPrimary} onPress={() => navigation.goBack()} />
                     </View>
@@ -27,7 +27,7 @@ class BrowserHeader extends React.PureComponent {
 }
 
 const styles = StyleSheet.create({
-    headerContainer: {
+    container: {
         flexDirection: 'row',
         backgroundColor: colors.primary,
     },
