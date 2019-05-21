@@ -1,11 +1,11 @@
 import React from 'react';
-import { SafeAreaView, View, Button, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { Button as ElementButton } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 import { colors } from '../config';
 import { BrowserHeader } from './BrowserHeader';
+import { BrowserFooter } from './BrowserFooter';
 
 class BrowserUI extends React.PureComponent {
     constructor(props) {
@@ -89,55 +89,12 @@ class BrowserUI extends React.PureComponent {
                             null
                     }
                 </View>
-                <SafeAreaView style={styles.safeContainer}>
-                    <View style={styles.footerContainer}>
-                        <ElementButton
-                            icon={
-                                <Icon
-                                    name="arrow-back"
-                                    size={15}
-                                    color={colors.secondary} />
-                            }
-                            containerStyle={styles.footerButtonContainer}
-                            buttonStyle={styles.footerButtonStyle}
-                            onPress={() => this.browser.goBack()} />
-                        <ElementButton
-                            icon={
-                                <Icon
-                                    name="arrow-forward"
-                                    size={15}
-                                    color={colors.secondary} />
-                            }
-                            containerStyle={styles.footerButtonContainer}
-                            buttonStyle={styles.footerButtonStyle}
-                            onPress={() => this.browser.goForward()} />
-                        {
-                            this.state.isBrowserAutoRefreshEnabled === true
-                            ?
-                                <ElementButton
-                                    icon={
-                                        <Icon
-                                            name="stop"
-                                            size={15}
-                                            color={colors.lightTertiary} />
-                                    }
-                                    containerStyle={styles.footerButtonContainer}
-                                    buttonStyle={styles.footerButtonStyle}
-                                    onPress={() => this.disableBrowserAutoRefresh()} />
-                            :
-                                <ElementButton
-                                    icon={
-                                        <Icon
-                                            name="refresh"
-                                            size={15}
-                                            color={colors.secondary} />
-                                    }
-                                    containerStyle={styles.footerButtonContainer}
-                                    buttonStyle={styles.footerButtonStyle}
-                                    onPress={() => this.enableBrowserAutoRefresh()} />
-                        }
-                    </View>
-                </SafeAreaView>
+                <BrowserFooter
+                    isBrowserAutoRefreshEnabled={this.state.isBrowserAutoRefreshEnabled}
+                    onBackPress={() => this.browser.goBack()}
+                    onForwardPress={() => this.browser.goForward()}
+                    onRefreshStartPress={() => this.enableBrowserAutoRefresh()}
+                    onRefreshStopPress={() => this.disableBrowserAutoRefresh()} />
             </View>
         );
     }
@@ -147,10 +104,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    safeContainer: {
-        backgroundColor: colors.primary,
-    },
-
     webViewContainer: {
         flex: 1,
         justifyContent: 'center',
@@ -162,18 +115,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf:'center',
         position: 'absolute',
-    },
-    footerContainer: {
-        flexDirection: 'row',
-    },
-    footerButtonContainer: {
-        flex: 1,
-    },
-
-
-
-    footerButtonStyle: {
-        backgroundColor:colors.primary
     },
 });
 
