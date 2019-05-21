@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
 
-import { colors } from '../config';
+import { BrowserBodySpinner } from './BrowserBodySpinner';
 
 class BrowserBody extends React.PureComponent {
 
@@ -25,15 +25,7 @@ class BrowserBody extends React.PureComponent {
                     source={{uri: this.props.website.url}}
                     onLoadStart={this.props.onLoadStart}
                     onLoad={this.props.onLoad} />
-                {
-                    this.props.isLoading === true
-                    ?
-                        <View style={styles.loadingViewContainer}>
-                            <ActivityIndicator color={colors.primary} size="large" />
-                        </View>
-                    :
-                        null
-                }
+                <BrowserBodySpinner isLoading={this.props.isLoading} />
             </View>
         );
     }
@@ -46,12 +38,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     browserContainer: {
-    },
-    loadingViewContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf:'center',
-        position: 'absolute',
     },
 });
 
