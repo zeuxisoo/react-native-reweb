@@ -5,7 +5,7 @@ import { View, Text, StyleSheet } from 'react-native';
 class CenterTextBlock extends React.PureComponent {
 
     static propTypes = {
-        text: PropTypes.text,
+        text: PropTypes.string,
     }
 
     static defaultProps = {
