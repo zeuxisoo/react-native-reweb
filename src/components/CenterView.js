@@ -1,7 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 
 class CenterView extends React.PureComponent {
+
+    static propTypes = {
+        text: PropTypes.text,
+    }
+
+    static defaultProps = {
+        text: "What?",
+    }
 
     render() {
         return (
