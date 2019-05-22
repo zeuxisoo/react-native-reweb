@@ -1,17 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 
 import { colors } from '../config';
 
 class HeaderTitle extends React.PureComponent {
 
-    render() {
-        const website = this.props.website;
+    static propTypes = {
+        website: PropTypes.object,
+    }
 
+    static defaultProps = {
+        website: {
+            name: "",
+            url : "",
+        }
+    }
+
+    render() {
         return (
             <View style={styles.container}>
-                <Text>{website.name}</Text>
-                <Text style={styles.url}>{website.url}</Text>
+                <Text>{this.props.website.name}</Text>
+                <Text style={styles.url}>{this.props.website.url}</Text>
             </View>
         );
     }
