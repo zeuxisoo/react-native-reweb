@@ -18,6 +18,8 @@ class BrowserFooterButton extends React.PureComponent {
     static defaultProps = {
         iconName : "",
         iconColor: null,
+
+        onPress: () => console.log('Please attach onPress method'),
     }
 
     render() {

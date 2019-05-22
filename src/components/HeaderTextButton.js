@@ -12,6 +12,8 @@ class HeaderTextButton extends React.PureComponent {
 
     static defaultProps = {
         text: "",
+
+        onPress: () => console.log('Please attach onPress method'),
     }
 
     render() {

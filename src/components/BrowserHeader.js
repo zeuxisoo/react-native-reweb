@@ -17,7 +17,9 @@ class BrowserHeader extends React.PureComponent {
         website: {
             name: "",
             url : "",
-        }
+        },
+
+        onDonePress: () => console.log('Please attach onDonePress method'),
     }
 
     render() {

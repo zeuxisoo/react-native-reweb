@@ -8,14 +8,16 @@ class WebsiteListItem extends React.PureComponent {
 
     static propTypes = {
         website: PropTypes.object,
-        onPress: PropTypes.func,
+        onItemPress: PropTypes.func,
     }
 
     static defaultProps = {
         website: {
             name: "",
             url : "",
-        }
+        },
+
+        onItemPress: () => console.log('Please attach onItemPress method'),
     }
 
     render() {
