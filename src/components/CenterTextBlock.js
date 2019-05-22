@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 
-class CenterView extends React.PureComponent {
+class CenterTextBlock extends React.PureComponent {
 
     static propTypes = {
         text: PropTypes.text,
@@ -31,5 +31,5 @@ const styles = StyleSheet.create({
 });
 
 export {
-    CenterView
+    CenterTextBlock
 };

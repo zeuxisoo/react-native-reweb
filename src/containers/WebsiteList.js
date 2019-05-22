@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, InteractionManager } from 'react-native';
 import { connect } from 'react-redux';
 
-import { CenterView, WebsiteListItem } from '../components';
+import { CenterTextBlock, WebsiteListItem } from '../components';
 import { fetchWebsites } from '../redux/actions/website';
 
 class WebsiteListContainer extends React.Component {
@@ -25,7 +25,7 @@ class WebsiteListContainer extends React.Component {
 
     render() {
         if (this.props.isLoading === true) {
-            return <CenterView text="Loading..." />
+            return <CenterTextBlock text="Loading..." />
         }
 
         return (
