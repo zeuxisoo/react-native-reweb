@@ -3,7 +3,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import { Provider } from 'react-redux';
 
 import { colors } from './config';
-import { HomeScreen, WebsiteCreateScreen, WebsiteIndexScreen } from './screens';
+import { WebsiteIndexScreen, WebsiteCreateScreen, WebsiteShowScreen } from './screens';
 import store from './redux/store';
 import DBHelper from './db/DBHelper';
 
@@ -15,11 +15,11 @@ console.disableYellowBox = true;
 
 //
 const AppNavigator = createStackNavigator({
-    Home: HomeScreen,
+    WebsiteIndexScreen : WebsiteIndexScreen,
     WebsiteCreateScreen: WebsiteCreateScreen,
-    WebsiteIndexScreen: WebsiteIndexScreen,
+    WebsiteShowScreen  : WebsiteShowScreen,
 },{
-    initialRouteName: "Home",
+    initialRouteName: "WebsiteIndexScreen",
     defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: colors.primary,

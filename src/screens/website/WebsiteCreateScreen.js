@@ -3,6 +3,7 @@ import React from 'react';
 import { CreateWebsiteForm } from '../../containers';
 
 class WebsiteCreateScreen extends React.Component {
+
     static navigationOptions = {
         title: "Create Website"
     }
@@ -10,6 +11,7 @@ class WebsiteCreateScreen extends React.Component {
     render() {
         return <CreateWebsiteForm />
     }
+
 }
 
 export {
