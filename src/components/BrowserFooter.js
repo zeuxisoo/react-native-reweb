@@ -1,13 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
-import { Button as ElementButton } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { BrowserSafeArea } from './BrowserSafeArea';
 import { BrowserFooterButton } from './BrowserFooterButton';
 import { colors } from '../config';
 
 class BrowserFooter extends React.PureComponent {
+
+    static propTypes = {
+        isBrowserAutoRefreshEnabled: PropTypes.bool,
+
+        onBackPress: PropTypes.func,
+        onForwardPress: PropTypes.func,
+        onRefreshStopPress: PropTypes.func,
+        onRefreshStartPress: PropTypes.func,
+    }
+
+    static defaultProps = {
+        isBrowserAutoRefreshEnabled: false,
+    }
 
     render() {
         return (

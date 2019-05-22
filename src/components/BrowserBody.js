@@ -1,10 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
 
 import { BrowserBodySpinner } from './BrowserBodySpinner';
 
 class BrowserBody extends React.PureComponent {
+
+    static propTypes = {
+        isLoading: PropTypes.bool,
+        website: PropTypes.object,
+
+        onRef: PropTypes.func,
+        onLoadStart: PropTypes.func,
+        onLoad: PropTypes.func,
+    }
+
+    static defaultProps = {
+        website: {
+            url: "",
+        },
+        isLoading: true,
+    }
 
     // Disable the default loading view
     handleRenderLoading() {
