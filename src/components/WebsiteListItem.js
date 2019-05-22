@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Text, } from 'react-native-elements';
 import { TouchableButton } from './TouchableButton';
 
 class WebsiteListItem extends React.PureComponent {

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { Button, Text } from 'react-native-elements';
 
 import { BrowserSafeArea } from './BrowserSafeArea';
-import { colors } from '../config';
+import { colors, vogues } from '../config';
 
 class BrowserHeader extends React.PureComponent {
 
@@ -27,7 +28,11 @@ class BrowserHeader extends React.PureComponent {
             <BrowserSafeArea>
                 <View style={styles.container}>
                     <View style={styles.doneButtonContainer}>
-                        <Button title="Done" color={colors.darkPrimary} onPress={this.props.onDonePress} />
+                        <Button
+                            title="Done"
+                            titleStyle={vogues.doneButtonTitleStyle}
+                            buttonStyle={vogues.doneButtonStyle}
+                            onPress={this.props.onDonePress} />
                     </View>
                     <View style={styles.addressBarContainer}>
                         <Text style={styles.websiteName}>{this.props.website.name}</Text>

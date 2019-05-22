@@ -19,6 +19,15 @@ const vogues = StyleSheet.create({
         marginRight: 0,
         marginBottom: 5,
         backgroundColor: colors.secondary,
+    },
+
+    //
+    doneButtonTitleStyle: {
+        color: colors.darkPrimary,
+    },
+
+    doneButtonStyle: {
+        backgroundColor: colors.primary,
     }
 });
 
