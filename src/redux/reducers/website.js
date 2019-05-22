@@ -1,16 +1,11 @@
 import * as types from '../types';
 
-const createState = {
-    isLoading: false,
-    websites : {},
+const initialState = {
+    isLoading: true,
+    websites : [],
 };
 
-const allState = {
-    isLoading: true,    // default true, show loading screen first
-    websites : [],
-}
-
-function create(state = createState, action) {
+export default function(state = initialState, action) {
     switch(action.type) {
         case types.ADD_WEBSITE:
             return {
@@ -20,15 +15,8 @@ function create(state = createState, action) {
         case types.ADD_WEBSITE_SUCCESS:
             return {
                 isLoading: false,
-                websites : action.website,
+                websites : [action.website, ...state.websites],
             }
-        default:
-            return state;
-    }
-}
-
-function all(state = allState, action) {
-    switch(action.type) {
         case types.SET_WEBSITES:
             return {
                 ...state,
@@ -43,8 +31,3 @@ function all(state = allState, action) {
             return state;
     }
 }
-
-export {
-    create,
-    all,
-};

@@ -77,7 +77,7 @@ class CreateWebsiteFormContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    isLoading: state.createWebsite.isLoading,
+    isLoading: state.website.isLoading,
 });
 
 const mapDispatchToProps = dispatch => ({

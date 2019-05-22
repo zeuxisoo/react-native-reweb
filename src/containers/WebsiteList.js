@@ -8,15 +8,12 @@ import { fetchWebsites } from '../redux/actions/website';
 class WebsiteListContainer extends React.Component {
 
     componentDidMount() {
-        this.willFocusListener = this.props.navigation.addListener("willFocus", () => {
-            InteractionManager.runAfterInteractions(() => {
-                this.props.fetchWebsites()
-            });
+        InteractionManager.runAfterInteractions(() => {
+            this.props.fetchWebsites()
         });
     }
 
     componentWillUnmount() {
-        this.willFocusListener.remove();
     }
 
     renderItem(item) {
@@ -42,8 +39,8 @@ class WebsiteListContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    isLoading: state.allWebsite.isLoading,
-    websites : state.allWebsite.websites,
+    isLoading: state.website.isLoading,
+    websites : state.website.websites,
 });
 
 const mapDispatchToProps = dispatch => ({

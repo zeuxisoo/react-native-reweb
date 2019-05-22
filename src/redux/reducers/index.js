@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-import * as website from './website';
+import { default as website } from './website';
 
 const reducers = combineReducers({
-    createWebsite: website.create,
-    allWebsite   : website.all,
+    website: website,
 });
 
 export default reducers;
