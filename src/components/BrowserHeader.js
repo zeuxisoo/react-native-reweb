@@ -9,18 +9,9 @@ import { colors, vogues } from '../config';
 class BrowserHeader extends React.PureComponent {
 
     static propTypes = {
-        website: PropTypes.object,
+        website: PropTypes.object.isRequired,
 
-        onDonePress: PropTypes.func,
-    }
-
-    static defaultProps = {
-        website: {
-            name: "",
-            url : "",
-        },
-
-        onDonePress: () => console.log('Please attach onDonePress method'),
+        onDonePress: PropTypes.func.isRequired,
     }
 
     render() {

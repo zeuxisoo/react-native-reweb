@@ -8,14 +8,7 @@ import { colors } from '../config';
 class HeaderTitle extends React.PureComponent {
 
     static propTypes = {
-        website: PropTypes.object,
-    }
-
-    static defaultProps = {
-        website: {
-            name: "",
-            url : "",
-        }
+        website: PropTypes.object.isRequired,
     }
 
     render() {

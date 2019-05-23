@@ -12,20 +12,11 @@ import { SwipeOutButton } from './SwipeOutButton';
 class WebsiteListItem extends React.PureComponent {
 
     static propTypes = {
-        index               : PropTypes.number,
-        website             : PropTypes.object,
-        currentSwipeOutRowId: PropTypes.number,
+        index  : PropTypes.number.isRequired,
+        website: PropTypes.object.isRequired,
 
-        onItemPress: PropTypes.func,
-        onSwipeOutOpen: PropTypes.func,
-    }
-
-    static defaultProps = {
-        index  : -1,
-        website: {},
-
-        onItemPress: () => console.log('Please attach onItemPress method'),
-        onSwipeOutOpen: () => console.log('Please attach onSwipeOutOpen method'),
+        onItemPress: PropTypes.func.isRequired,
+        onSwipeOutOpen: PropTypes.func.isRequired,
     }
 
     handlePressDelete() {

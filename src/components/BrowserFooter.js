@@ -11,19 +11,14 @@ class BrowserFooter extends React.PureComponent {
     static propTypes = {
         isBrowserAutoRefreshEnabled: PropTypes.bool,
 
-        onBackPress: PropTypes.func,
-        onForwardPress: PropTypes.func,
-        onRefreshStopPress: PropTypes.func,
-        onRefreshStartPress: PropTypes.func,
+        onBackPress: PropTypes.func.isRequired,
+        onForwardPress: PropTypes.func.isRequired,
+        onRefreshStopPress: PropTypes.func.isRequired,
+        onRefreshStartPress: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
         isBrowserAutoRefreshEnabled: false,
-
-        onBackPress        : () => console.log('Please attach onBackPress method'),
-        onForwardPress     : () => console.log('Please attach onForwardPress method'),
-        onRefreshStopPress : () => console.log('Please attach onRefreshStopPress method'),
-        onRefreshStartPress: () => console.log('Please attach onRefreshStartPress method'),
     }
 
     render() {

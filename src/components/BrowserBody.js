@@ -9,22 +9,15 @@ class BrowserBody extends React.PureComponent {
 
     static propTypes = {
         isLoading: PropTypes.bool,
-        website: PropTypes.object,
+        website: PropTypes.object.isRequired,
 
-        onRef: PropTypes.func,
-        onLoadStart: PropTypes.func,
-        onLoad: PropTypes.func,
+        onRef: PropTypes.func.isRequired,
+        onLoadStart: PropTypes.func.isRequired,
+        onLoad: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
         isLoading: true,
-        website  : {
-            url: "",
-        },
-
-        onRef      : () => console.log('Please attach onRef method'),
-        onLoadStart: () => console.log('Please attach onLoadStart method'),
-        onLoad     : () => console.log('Please attach onLoad method'),
     }
 
     // Disable the default loading view

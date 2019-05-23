@@ -7,6 +7,7 @@ class HeaderTextButton extends React.PureComponent {
 
     static propTypes = {
         text: PropTypes.string,
+
         onPress: PropTypes.func,
     }
 

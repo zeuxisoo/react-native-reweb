@@ -12,14 +12,12 @@ class BrowserFooterButton extends React.PureComponent {
         iconName: PropTypes.string,
         iconColor: PropTypes.string,
 
-        onPress: PropTypes.func,
+        onPress: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
         iconName : "",
         iconColor: null,
-
-        onPress: () => console.log('Please attach onPress method'),
     }
 
     render() {
