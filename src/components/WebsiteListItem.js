@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet } from 'react-native';
 import { View, ListItem } from 'react-native-elements';
 import SwipeOut from 'react-native-swipeout';
+import _ from 'lodash';
 
 import { colors } from '../config';
 import { TouchableButton } from './TouchableButton';
@@ -11,17 +12,37 @@ import { SwipeOutButton } from './SwipeOutButton';
 class WebsiteListItem extends React.PureComponent {
 
     static propTypes = {
-        website: PropTypes.object,
+        index               : PropTypes.number,
+        website             : PropTypes.object,
+        currentSwipeOutRowId: PropTypes.number,
+
         onItemPress: PropTypes.func,
+        onSwipeOutOpen: PropTypes.func,
     }
 
     static defaultProps = {
-        website: {
-            name: "",
-            url : "",
-        },
+        index  : -1,
+        website: {},
 
         onItemPress: () => console.log('Please attach onItemPress method'),
+        onSwipeOutOpen: () => console.log('Please attach onSwipeOutOpen method'),
+    }
+
+    handlePressDelete() {
+        // TODO: delete website
+        alert(this.props.website.name);
+    }
+
+    handleSwipeOutOnOpen(rowId, direction) {
+        if (_.isUndefined(direction) === false) {
+            this.props.onSwipeOutOpen(rowId);
+        }
+    }
+
+    handleSwipeOutOnClose(rowId, direction) {
+        if (rowId === this.props.currentSwipeOutRowId && _.isUndefined(direction) === false) {
+            this.props.onSwipeOutOpen(null);
+        }
     }
 
     render() {
@@ -29,16 +50,21 @@ class WebsiteListItem extends React.PureComponent {
             {
                 component: <SwipeOutButton iconName="delete" iconColor="white" iconSize={20} buttonStyle={styles.deleteButton} />,
                 backgroundColor: colors.backgroundDelete,
-                onPress: () => alert("TODO") // TODO
+                onPress: () => this.handlePressDelete()
             }
         ];
 
         return (
             <TouchableButton>
                 <SwipeOut
-                    autoClose={true}
+                    sectionId={1}
+                    rowID={this.props.index}
+                    close={(this.props.currentSwipeOutRowId !== this.props.index)}
                     right={rightButtons}
-                    backgroundColor="white">
+                    autoClose={true}
+                    backgroundColor="white"
+                    onOpen = {(sectionId, rowId, direction) => this.handleSwipeOutOnOpen(rowId, direction)}
+                    onClose= {(sectionId, rowId, direction) => this.handleSwipeOutOnClose(rowId, direction)}>
                     <ListItem
                         title={this.props.website.name}
                         titleStyle={styles.titleStyle}

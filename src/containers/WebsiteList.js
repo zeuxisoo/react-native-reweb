@@ -7,6 +7,14 @@ import { fetchWebsites } from '../redux/actions/website';
 
 class WebsiteListContainer extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            currentSwipeOutRowId: -1
+        }
+    }
+
     componentDidMount() {
         InteractionManager.runAfterInteractions(() => {
             this.props.fetchWebsites()
@@ -16,8 +24,19 @@ class WebsiteListContainer extends React.Component {
     componentWillUnmount() {
     }
 
-    renderItem(item) {
-        return <WebsiteListItem website={item} onItemPress={this.props.onItemPress} />
+    handleSwipeOutOpen(rowId) {
+        this.setState({
+            currentSwipeOutRowId: rowId,
+        });
+    }
+
+    renderItem(item, index) {
+        return <WebsiteListItem
+                    index={index}
+                    website={item}
+                    currentSwipeOutRowId={this.state.currentSwipeOutRowId}
+                    onItemPress={this.props.onItemPress}
+                    onSwipeOutOpen={this.handleSwipeOutOpen.bind(this)} />
     }
 
     render() {
@@ -30,7 +49,8 @@ class WebsiteListContainer extends React.Component {
                 <FlatList
                     data={this.props.websites}
                     keyExtractor={(item, index) => item.id.toString()}
-                    renderItem={({ item, index }) => this.renderItem(item)}
+                    renderItem={({ item, index }) => this.renderItem(item, index)}
+                    extraData={this.state.currentSwipeOutRowId}
                     ItemSeparatorComponent={() => <WebsiteListItemSeparator />}
                     bounces={false} />
             </View>
