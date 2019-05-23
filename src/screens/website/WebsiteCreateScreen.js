@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CreateWebsiteForm } from '../../containers';
+import { WebsiteCreateForm } from '../../containers';
 
 class WebsiteCreateScreen extends React.Component {
 
@@ -9,7 +9,7 @@ class WebsiteCreateScreen extends React.Component {
     }
 
     render() {
-        return <CreateWebsiteForm />
+        return <WebsiteCreateForm />
     }
 
 }

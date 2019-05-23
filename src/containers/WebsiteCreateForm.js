@@ -7,7 +7,7 @@ import { alertError, alertSuccess, alertSystem } from '../helpers/alert';
 import { createWebsite } from '../redux/actions/website';
 import { WebsiteInfoInput, SecondaryButton } from '../components';
 
-class CreateWebsiteFormContainer extends React.Component {
+class WebsiteCreateFormContainer extends React.Component {
 
     constructor(props) {
         super(props)
@@ -84,8 +84,8 @@ const mapDispatchToProps = dispatch => ({
     createWebsite: (website) => dispatch(createWebsite(website)),
 });
 
-const CreateWebsiteForm = connect(mapStateToProps, mapDispatchToProps)(CreateWebsiteFormContainer);
+const WebsiteCreateForm = connect(mapStateToProps, mapDispatchToProps)(WebsiteCreateFormContainer);
 
 export {
-    CreateWebsiteForm
+    WebsiteCreateForm
 };
