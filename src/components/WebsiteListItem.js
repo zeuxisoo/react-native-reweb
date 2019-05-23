@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Text, } from 'react-native-elements';
+import { StyleSheet } from 'react-native';
+import { View, ListItem } from 'react-native-elements';
+import SwipeOut from 'react-native-swipeout';
+
+import { colors } from '../config';
 import { TouchableButton } from './TouchableButton';
+import { SwipeOutButton } from './SwipeOutButton';
 
 class WebsiteListItem extends React.PureComponent {
 
@@ -20,17 +25,47 @@ class WebsiteListItem extends React.PureComponent {
     }
 
     render() {
+        const rightButtons = [
+            {
+                component: <SwipeOutButton iconName="delete" iconColor="white" iconSize={20} buttonStyle={styles.deleteButton} />,
+                backgroundColor: colors.backgroundDelete,
+                onPress: () => alert("TODO") // TODO
+            }
+        ];
+
         return (
-            <TouchableButton onPress={() => this.props.onItemPress(this.props.website)}>
-                <Card>
-                    <Text>{this.props.website.name}</Text>
-                    <Text>{this.props.website.url}</Text>
-                </Card>
+            <TouchableButton>
+                <SwipeOut
+                    autoClose={true}
+                    right={rightButtons}
+                    backgroundColor="white">
+                    <ListItem
+                        title={this.props.website.name}
+                        titleStyle={styles.titleStyle}
+                        subtitle={this.props.website.url}
+                        subtitleStyle={styles.subtitleStyle}
+                        onPress={() => this.props.onItemPress(this.props.website)} />
+                </SwipeOut>
             </TouchableButton>
         )
     }
 
 }
+
+const styles = StyleSheet.create({
+    titleStyle: {
+        color: colors.primary,
+        fontWeight: 'bold',
+        paddingBottom: 5,
+    },
+    subtitleStyle: {
+        color: colors.secondary,
+        fontSize: 13,
+    },
+    deleteButton: {
+        backgroundColor: colors.backgroundDelete,
+    }
+});
 
 export {
     WebsiteListItem
