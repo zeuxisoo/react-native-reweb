@@ -55,11 +55,12 @@ export function deleteWebsite(website) {
         dispatch({ type: types.DELETE_WEBSITE });
 
         WebsiteModel
-            .update(website, {
-                trash: true,
+            .where("id = $0", website.id)
+            .update({
+                trash: true
             })
-            .then(websiteObject => {
-                dispatch(deletedWebsite(websiteObject));
+            .then(updatedWebsites => {
+                dispatch(deletedWebsite(updatedWebsites[0]));
             });
     }
 }

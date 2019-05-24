@@ -8,7 +8,7 @@ class Model {
     static incrementing = true;
     static schema       = {};
     static sortBy       = {};
-    static whereBy      = "";
+    static whereBy      = {};
 
     id() {
         const currentId = DBHelper.connection().objects(this.schema.name).max("id");
@@ -51,8 +51,11 @@ class Model {
         return this;
     }
 
-    where(condition) {
-        this.whereBy = condition;
+    where(condition, ...parameters) {
+        this.whereBy = {
+            condition : condition,
+            parameters: parameters,
+        }
 
         return this;
     }
@@ -64,7 +67,7 @@ class Model {
                 let model = this.table(this.schema.name);
 
                 if (_.isEmpty(this.whereBy) === false) {
-                    model = model.filtered(this.whereBy);
+                    model = model.filtered(this.whereBy.condition, ...this.whereBy.parameters);
                 }
 
                 if (_.isEmpty(this.sortBy) === false) {
@@ -80,15 +83,30 @@ class Model {
         });
     }
 
-    update(obj, data) {
+    update(data) {
         return new Promise((resolve, reject) => {
             try {
-                DBHelper.connection().write(() => {
-                    const updatedObject = _.merge(obj, data);
-                    const newObject     = DBHelper.connection().create(this.schema.name, updatedObject, true);
+                //
+                let model = this.table(this.schema.name);
 
-                    resolve(newObject);
-                });
+                if (_.isEmpty(this.whereBy) === false) {
+                    model = model.filtered(this.whereBy.condition, ...this.whereBy.parameters);
+                }
+
+                //
+                const oldItems = Array.from(model);
+                const newItems = [];
+
+                DBHelper.connection().write(() => {
+                    for(let index in oldItems) {
+                        const item    = oldItems[index];
+                        const newItem = DBHelper.connection().create(this.schema.name, _.merge(item, data), true);
+
+                        newItems.push(newItem);
+                    }
+
+                    resolve(newItems);
+                })
             }catch(e) {
                 reject(e);
             }
