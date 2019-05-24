@@ -42,6 +42,7 @@ export function fetchWebsites() {
         dispatch({ type: types.SET_WEBSITES });
 
         WebsiteModel
+            .where("trash == false")
             .all()
             .then(websites => {
                 dispatch(fetchedWebsites(websites));

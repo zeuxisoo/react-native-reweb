@@ -8,6 +8,7 @@ class Model {
     static incrementing = true;
     static schema       = {};
     static sortBy       = {};
+    static whereBy      = "";
 
     id() {
         const currentId = DBHelper.connection().objects(this.schema.name).max("id");
@@ -50,16 +51,27 @@ class Model {
         return this;
     }
 
+    where(condition) {
+        this.whereBy = condition;
+
+        return this;
+    }
+
     all() {
         return new Promise((resolve, reject) => {
             try {
                 let data  = [];
+                let model = this.table(this.schema.name);
+
+                if (_.isEmpty(this.whereBy) === false) {
+                    model = model.filtered(this.whereBy);
+                }
 
                 if (_.isEmpty(this.sortBy) === false) {
-                    data = this.table(this.schema.name).sorted(this.sortBy.name, this.sortBy.desc);
-                }else{
-                    data = this.table(this.schema.name);
+                    model = model.sorted(this.sortBy.name, this.sortBy.desc);
                 }
+
+                data = model;
 
                 resolve(Array.from(data));
             }catch(e) {
