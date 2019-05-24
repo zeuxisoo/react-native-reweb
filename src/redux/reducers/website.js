@@ -27,6 +27,18 @@ export default function(state = initialState, action) {
                 isLoading: false,
                 websites : action.websites,
             }
+        case types.DELETE_WEBSITE:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case types.DELETE_WEBSITE_SUCCESS:
+            return {
+                isLoading: false,
+                websites : state.websites.filter(website => {
+                    return website.trash !== true;
+                })
+            }
         default:
             return state;
     }

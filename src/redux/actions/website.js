@@ -2,6 +2,7 @@ import * as types from '../types';
 
 import { WebsiteModel } from '../../db/models';
 
+//
 function createdWebsite(website) {
     return {
         type   : types.ADD_WEBSITE_SUCCESS,
@@ -16,6 +17,14 @@ function fetchedWebsites(websites) {
     }
 }
 
+function deletedWebsite(website) {
+    return {
+        type   : types.DELETE_WEBSITE_SUCCESS,
+        website: website,
+    }
+}
+
+//
 export function createWebsite(website) {
     return (dispatch, getState) => {
         dispatch({ type: types.ADD_WEBSITE });
@@ -36,6 +45,20 @@ export function fetchWebsites() {
             .all()
             .then(websites => {
                 dispatch(fetchedWebsites(websites));
+            });
+    }
+}
+
+export function deleteWebsite(website) {
+    return (dispatch, getState) => {
+        dispatch({ type: types.DELETE_WEBSITE });
+
+        WebsiteModel
+            .update(website, {
+                trash: true,
+            })
+            .then(websiteObject => {
+                dispatch(deletedWebsite(websiteObject));
             });
     }
 }

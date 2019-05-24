@@ -68,6 +68,21 @@ class Model {
         });
     }
 
+    update(obj, data) {
+        return new Promise((resolve, reject) => {
+            try {
+                DBHelper.connection().write(() => {
+                    const updatedObject = _.merge(obj, data);
+                    const newObject     = DBHelper.connection().create(this.schema.name, updatedObject, true);
+
+                    resolve(newObject);
+                });
+            }catch(e) {
+                reject(e);
+            }
+        });
+    }
+
 }
 
 // Using proxy to build up missing method for Model

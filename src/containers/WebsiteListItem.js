@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet } from 'react-native';
-import { View, ListItem } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { ListItem } from 'react-native-elements';
 import SwipeOut from 'react-native-swipeout';
 import _ from 'lodash';
 
 import { colors } from '../config';
-import { TouchableButton } from './TouchableButton';
-import { SwipeOutButton } from './SwipeOutButton';
+import { TouchableButton, SwipeOutButton } from '../components';
+import { deleteWebsite } from '../redux/actions/website';
 
-class WebsiteListItem extends React.PureComponent {
+class WebsiteListItemContainer extends React.PureComponent {
 
     static propTypes = {
         index  : PropTypes.number.isRequired,
@@ -20,8 +21,7 @@ class WebsiteListItem extends React.PureComponent {
     }
 
     handlePressDelete() {
-        // TODO: delete website
-        alert(this.props.website.name);
+        this.props.deleteWebsite(this.props.website);
     }
 
     handleSwipeOutOnOpen(rowId, direction) {
@@ -83,6 +83,18 @@ const styles = StyleSheet.create({
         backgroundColor: colors.backgroundDelete,
     }
 });
+
+const mapStateToProps = state => ({
+    isLoading: state.website.isLoading,
+    websites : state.website.websites,
+});
+
+const mapDispatchToProps = dispatch => ({
+    deleteWebsite: website => dispatch(deleteWebsite(website)),
+});
+
+const WebsiteListItem = connect(mapStateToProps, mapDispatchToProps)(WebsiteListItemContainer);
+
 
 export {
     WebsiteListItem

@@ -2,7 +2,8 @@ import React from 'react';
 import { View, FlatList, InteractionManager } from 'react-native';
 import { connect } from 'react-redux';
 
-import { CenterTextBlock, WebsiteListItem, WebsiteListItemSeparator } from '../components';
+import { CenterTextBlock, WebsiteListItemSeparator } from '../components';
+import { WebsiteListItem } from './WebsiteListItem';
 import { fetchWebsites } from '../redux/actions/website';
 
 class WebsiteListContainer extends React.Component {
