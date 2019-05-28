@@ -1,11 +1,12 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { colors } from '../config';
-import { UserAgentIndexScreen } from '../screens';
+import { UserAgentIndexScreen, UserAgentCreateScreen } from '../screens';
 
 //
 const UserAgentStackNavigator = createStackNavigator({
     UserAgentIndexScreen: UserAgentIndexScreen,
+    UserAgentCreateScreen: UserAgentCreateScreen,
 },{
     initialRouteName: "UserAgentIndexScreen",
     defaultNavigationOptions: {
