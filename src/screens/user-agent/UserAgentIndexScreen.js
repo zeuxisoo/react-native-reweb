@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 
 import { HeaderMaterialButtons, HeaderMaterialItem } from '../../components';
+import { UserAgentList } from '../../containers';
 
 class UserAgentIndexScreen extends React.Component {
 
@@ -16,11 +16,13 @@ class UserAgentIndexScreen extends React.Component {
         }
     }
 
+    handleItemPress(userAgent) {
+        // Nothing to do when click on user agent item
+    }
+
     render() {
         return (
-            <View>
-                <Text>TODO, Show user agent</Text>
-            </View>
+            <UserAgentList navigation={this.props.navigation} onItemPress={(userAgent) => this.handleItemPress(userAgent)} />
         );
     }
 
