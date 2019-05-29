@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "faker": "https://github.com/Marak/faker.js#a9a11ee55ae1ae528ffc14c869a4c8353e2ba419",
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react": "16.8.3",

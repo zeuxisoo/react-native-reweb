@@ -3,9 +3,17 @@ import { Button } from 'react-native-elements';
 
 import { vogues } from '../config';
 
-const SecondaryButton = props => (
-    <Button buttonStyle={vogues.secondaryButton} {...props} />
-);
+class SecondaryButton extends React.PureComponent {
+
+    render() {
+        const { buttonStyle , ...restProps } = this.props;
+
+        return (
+            <Button buttonStyle={[vogues.secondaryButton, buttonStyle]} {...restProps} />
+        );
+    }
+
+}
 
 export {
     SecondaryButton
