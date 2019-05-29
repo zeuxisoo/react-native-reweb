@@ -4,7 +4,7 @@ import { Input } from 'react-native-elements';
 
 import { colors, vogues } from '../config';
 
-const WebsiteInfoInput = props => (
+const FormInput = props => (
     <Input
         containerStyle={vogues.inputContainerStyle}
         inputContainerStyle={styles.inputStyle}
@@ -22,5 +22,5 @@ const styles = StyleSheet.create({
 });
 
 export {
-    WebsiteInfoInput
+    FormInput
 };

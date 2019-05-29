@@ -8,6 +8,15 @@ import AppDrawerMenu from './AppDrawerMenu';
 
 //
 const AppDrawerNavigator = createDrawerNavigator({
+    UserAgent: {
+        screen: UserAgentStackNavigator,
+        navigationOptions: {
+            drawerLabel: "User Agent",
+            drawerIcon : () => (
+                <Icon name="motorcycle" size={24} />
+            )
+        }
+    },
     Home: {
         screen: WebsiteStackNavigator,
         navigationOptions: {
@@ -17,15 +26,6 @@ const AppDrawerNavigator = createDrawerNavigator({
             )
         }
     },
-    UserAgent: {
-        screen: UserAgentStackNavigator,
-        navigationOptions: {
-            drawerLabel: "User Agent",
-            drawerIcon : () => (
-                <Icon name="motorcycle" size={24} />
-            )
-        }
-    }
 }, {
     contentComponent: AppDrawerMenu
 });

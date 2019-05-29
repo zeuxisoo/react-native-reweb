@@ -5,7 +5,7 @@ import { isEmpty } from 'validator';
 
 import { alertError, alertSuccess, alertSystem } from '../helpers/alert';
 import { createWebsite } from '../redux/actions/website';
-import { WebsiteInfoInput, SecondaryButton } from '../components';
+import { FormInput, SecondaryButton } from '../components';
 
 class WebsiteCreateFormContainer extends React.Component {
 
@@ -53,13 +53,13 @@ class WebsiteCreateFormContainer extends React.Component {
     render() {
         return (
             <Card title="Website Info">
-                <WebsiteInfoInput
+                <FormInput
                     label="Name"
                     placeholder="Site name"
                     autoCapitalize="none"
                     onChangeText={this.handleNameChange.bind(this)}
                     value={this.state.name} />
-                <WebsiteInfoInput
+                <FormInput
                     label="Url"
                     placeholder="http://site.name"
                     multiline={true}

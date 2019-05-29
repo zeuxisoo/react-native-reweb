@@ -1,6 +1,6 @@
 export * from './HeaderMaterialButton';
 export * from './SecondaryButton';
-export * from './WebsiteInfoInput';
+export * from './FormInput';
 export * from './CenterTextBlock';
 export * from './TouchableButton';
 export * from './WebsiteListItemSeparator';
