@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, InteractionManager } from 'react-native';
 import { connect } from 'react-redux';
 
-import { CenterTextBlock, WebsiteListItemSeparator } from '../components';
+import { CenterTextBlock, ListItemSeparator } from '../components';
 import { WebsiteListItem } from './WebsiteListItem';
 import { fetchWebsites } from '../redux/actions/website';
 
@@ -52,7 +52,7 @@ class WebsiteListContainer extends React.Component {
                     keyExtractor={(item, index) => item.id.toString()}
                     renderItem={({ item, index }) => this.renderItem(item, index)}
                     extraData={this.state.currentSwipeOutRowId}
-                    ItemSeparatorComponent={() => <WebsiteListItemSeparator />}
+                    ItemSeparatorComponent={() => <ListItemSeparator />}
                     bounces={false} />
             </View>
         );

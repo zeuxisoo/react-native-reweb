@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 
 import { colors } from '../config';
 
-class WebsiteListItemSeparator extends React.PureComponent {
+class ListItemSeparator extends React.PureComponent {
 
     render() {
         return (
@@ -21,5 +21,5 @@ const styles = StyleSheet.create({
 })
 
 export {
-    WebsiteListItemSeparator
+    ListItemSeparator
 };

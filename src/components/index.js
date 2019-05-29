@@ -3,7 +3,7 @@ export * from './SecondaryButton';
 export * from './FormInput';
 export * from './CenterTextBlock';
 export * from './TouchableButton';
-export * from './WebsiteListItemSeparator';
+export * from './ListItemSeparator';
 export * from './HeaderTitle';
 export * from './HeaderTextButton';
 export * from './BrowserUI';
