@@ -1,14 +1,15 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { colors } from '../config';
-import { UserAgentIndexScreen, UserAgentCreateScreen } from '../screens';
+import { SettingsIndexScreen, UserAgentIndexScreen, UserAgentCreateScreen } from '../screens';
 
 //
-const UserAgentStackNavigator = createStackNavigator({
+const SettingsStackNavigator = createStackNavigator({
+    SettingsIndexScreen: SettingsIndexScreen,
     UserAgentIndexScreen: UserAgentIndexScreen,
     UserAgentCreateScreen: UserAgentCreateScreen,
 },{
-    initialRouteName: "UserAgentIndexScreen",
+    initialRouteName: "SettingsIndexScreen",
     defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: colors.primary,
@@ -24,7 +25,7 @@ const UserAgentStackNavigator = createStackNavigator({
 });
 
 //
-const UserAgentStackContainer = createAppContainer(UserAgentStackNavigator);
+const SettingsStackContainer = createAppContainer(SettingsStackNavigator);
 
 //
-export default UserAgentStackContainer;
+export default SettingsStackContainer;

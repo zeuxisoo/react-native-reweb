@@ -3,17 +3,17 @@ import { createDrawerNavigator, createAppContainer } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import WebsiteStackNavigator from './WebsiteStackNavigator';
-import UserAgentStackNavigator from './UserAgentStackNavigator';
+import SettingsStackNavigator from './SettingsStackNavigator';
 import AppDrawerMenu from './AppDrawerMenu';
 
 //
 const AppDrawerNavigator = createDrawerNavigator({
-    UserAgent: {
-        screen: UserAgentStackNavigator,
+    Settings: {
+        screen: SettingsStackNavigator,
         navigationOptions: {
-            drawerLabel: "User Agent",
+            drawerLabel: "Settings",
             drawerIcon : () => (
-                <Icon name="motorcycle" size={24} />
+                <Icon name="settings" size={24} />
             )
         }
     },
