@@ -48,7 +48,7 @@ class UserAgentListContainer extends React.Component {
         return (
             <View>
                 <FlatList
-                    data={this.props.UserAgents}
+                    data={this.props.userAgents}
                     keyExtractor={(item, index) => item.id.toString()}
                     renderItem={({ item, index }) => this.renderItem(item, index)}
                     extraData={this.state.currentSwipeOutRowId}
@@ -62,7 +62,7 @@ class UserAgentListContainer extends React.Component {
 
 const mapStateToProps = state => ({
     isLoading : state.userAgent.isLoading,
-    UserAgents: state.userAgent.userAgents,
+    userAgents: state.userAgent.userAgents,
 });
 
 const mapDispatchToProps = dispatch => ({
