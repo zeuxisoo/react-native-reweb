@@ -21,8 +21,18 @@ export default class DBHelper {
 
         // If current realm database schema version is smaller than schema list size, do migration
         while (nextSchemaIndex < schemas.length) {
-            const currentSchema = schemas[nextSchemaIndex++];
-            const migratedRealm = new Realm(_.merge(currentSchema, this.options));
+            const nextSchemaIndexMarker = nextSchemaIndex++;
+
+            // Find schema and seeder
+            const currentSchema = schemas[nextSchemaIndexMarker];
+
+            // Open connection, do migration and close it
+            const migratedRealm = new Realm(_.merge(currentSchema, this.options))
+
+            // Seed data to migrated db
+            if (_.isUndefined(currentSchema) === false) {
+                currentSchema.seeder(migratedRealm);
+            }
 
             migratedRealm.close();
         }
