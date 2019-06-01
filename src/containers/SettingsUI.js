@@ -1,11 +1,17 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, InteractionManager } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 
-import { switchUserAgent } from '../redux/actions/settings';
+import { fetchSettings, switchUserAgent } from '../redux/actions/settings';
 
 class SettingsUIContainer extends React.Component {
+
+    componentDidMount() {
+        InteractionManager.runAfterInteractions(() => {
+            this.props.fetchSettings();
+        });
+    }
 
     render() {
         return (
@@ -38,6 +44,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     switchUserAgent: (isOn) => dispatch(switchUserAgent(isOn)),
+    fetchSettings  : () => dispatch(fetchSettings()),
 });
 
 const SettingsUI = connect(mapStateToProps, mapDispatchToProps)(SettingsUIContainer);
