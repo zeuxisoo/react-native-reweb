@@ -1,11 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import _ from 'lodash';
 
-import { BrowserHeader } from './BrowserHeader';
-import { BrowserFooter } from './BrowserFooter';
-import { BrowserBody } from './BrowserBody';
+import { BrowserHeader, BrowserBody, BrowserFooter } from '../components';
+import { fetchSettings } from '../redux/actions/settings';
+import { fetchUserAgents } from '../redux/actions/user-agent';
 
-class BrowserUI extends React.PureComponent {
+class BrowserUIContainer extends React.Component {
+
+    static propTypes = {
+        navigation: PropTypes.object.isRequired,
+    }
+
     constructor(props) {
         super(props);
 
@@ -15,6 +23,9 @@ class BrowserUI extends React.PureComponent {
             isLoading: true,
             isBrowserAutoRefreshEnabled: false,
         };
+
+        this.props.fetchSettings();
+        this.props.fetchUserAgents();
     }
 
     // Show the custom loading when page load start
@@ -50,6 +61,16 @@ class BrowserUI extends React.PureComponent {
         });
     }
 
+    getUserAgent() {
+        if (this.props.settings.userAgent === true) {
+            const userAgent = _.sample(this.props.userAgents).content;
+            console.log(userAgent);
+            return userAgent;
+        }else{
+            return "";
+        }
+    }
+
     render() {
         const { navigation } = this.props;
         const website = navigation.getParam('website', {
@@ -64,6 +85,7 @@ class BrowserUI extends React.PureComponent {
                     onDonePress={() => navigation.goBack()} />
                 <BrowserBody
                     website={website}
+                    userAgent={this.getUserAgent()}
                     isLoading={this.state.isLoading}
                     onRef={website => this.browser = website}
                     onLoadStart={() => this.handleOnLoadStart()}
@@ -84,6 +106,18 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 });
+
+const mapStateToProps = state => ({
+    settings  : state.settings,
+    userAgents: state.userAgent.userAgents,
+});
+
+const mapDispatchToProps = dispath => ({
+    fetchSettings: () => dispath(fetchSettings()),
+    fetchUserAgents: () => dispath(fetchUserAgents()),
+});
+
+const BrowserUI = connect(mapStateToProps, mapDispatchToProps)(BrowserUIContainer);
 
 export {
     BrowserUI

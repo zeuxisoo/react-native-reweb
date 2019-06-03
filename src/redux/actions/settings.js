@@ -58,7 +58,6 @@ export function fetchSettings() {
                 return settingsObject;
             })
             .then(settings => {
-                console.log(settings);
                 dispatch(fetchedSettings(settings));
             });
     }

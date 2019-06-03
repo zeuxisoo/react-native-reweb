@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BrowserUI } from '../../components';
+import { BrowserUI } from '../../containers';
 
 class WebsiteShowScreen extends React.Component {
 

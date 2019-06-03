@@ -6,5 +6,7 @@ export * from './TouchableButton';
 export * from './ListItemSeparator';
 export * from './HeaderTitle';
 export * from './HeaderTextButton';
-export * from './BrowserUI';
+export * from './BrowserHeader';
+export * from './BrowserBody';
+export * from './BrowserFooter';
 export * from './SwipeOutButton';

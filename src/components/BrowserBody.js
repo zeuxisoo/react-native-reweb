@@ -10,6 +10,7 @@ class BrowserBody extends React.PureComponent {
     static propTypes = {
         isLoading: PropTypes.bool,
         website: PropTypes.object.isRequired,
+        userAgent: PropTypes.string,
 
         onRef: PropTypes.func.isRequired,
         onLoadStart: PropTypes.func.isRequired,
@@ -38,6 +39,7 @@ class BrowserBody extends React.PureComponent {
                     javaScriptEnabled={true}
                     ref={webview => this.props.onRef(webview)}
                     source={{uri: this.props.website.url}}
+                    userAgent={this.props.userAgent}
                     onLoadStart={this.props.onLoadStart}
                     onLoad={this.props.onLoad} />
                 <BrowserBodySpinner isLoading={this.props.isLoading} />
