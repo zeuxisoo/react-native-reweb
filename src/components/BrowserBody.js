@@ -33,6 +33,7 @@ class BrowserBody extends React.PureComponent {
                 <WebView
                     style={styles.browserContainer}
                     renderLoading={this.handleRenderLoading}
+                    useWebKit={true}
                     domStorageEnabled={true}
                     javaScriptEnabled={true}
                     ref={webview => this.props.onRef(webview)}
