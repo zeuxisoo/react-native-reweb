@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { UserAgentCreateForm } from '../../containers';
+import { UserAgentCreateForm } from '../../../containers';
 
 class UserAgentCreateScreen extends React.Component {
 

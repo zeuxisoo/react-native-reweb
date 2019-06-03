@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { HeaderMaterialButtons, HeaderMaterialItem } from '../../components';
-import { UserAgentList } from '../../containers';
+import { HeaderMaterialButtons, HeaderMaterialItem } from '../../../components';
+import { UserAgentList } from '../../../containers';
 
 class UserAgentIndexScreen extends React.Component {
 
