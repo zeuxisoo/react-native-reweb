@@ -12,7 +12,7 @@ class SettingsIndexScreen extends React.Component {
 
     render() {
         return (
-            <SettingsUI />
+            <SettingsUI navigation={this.props.navigation} />
         );
     }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet, InteractionManager } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
@@ -7,10 +8,18 @@ import { fetchSettings, switchUserAgent } from '../redux/actions/settings';
 
 class SettingsUIContainer extends React.Component {
 
+    static propTypes = {
+        navigation: PropTypes.object.isRequired
+    }
+
     componentDidMount() {
         InteractionManager.runAfterInteractions(() => {
             this.props.fetchSettings();
         });
+    }
+
+    handleMangeUserAgentPress() {
+        this.props.navigation.navigate('UserAgentIndexScreen');
     }
 
     render() {
@@ -25,7 +34,8 @@ class SettingsUIContainer extends React.Component {
                 <ListItem
                     title="Manage user agents"
                     chevron={true}
-                    topDivider={true} />
+                    topDivider={true}
+                    onPress={this.handleMangeUserAgentPress.bind(this)} />
             </View>
         )
     }
