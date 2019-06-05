@@ -41,7 +41,8 @@ export function fetchUserAgents() {
     return (dispatch, getState) => {
         dispatch({ type: types.SET_USER_AGENTS });
 
-        UserAgentModel
+        // return promise object for browser ui set user agent when fetched
+        return UserAgentModel
             .where("trash == false")
             .all()
             .then(userAgents => {

@@ -22,10 +22,11 @@ class BrowserUIContainer extends React.Component {
         this.state = {
             isLoading: true,
             isBrowserAutoRefreshEnabled: false,
+            userAgent: "",
         };
 
         this.props.fetchSettings();
-        this.props.fetchUserAgents();
+        this.props.fetchUserAgents().then(() => this.setUserAgent());
     }
 
     // Show the custom loading when page load start
@@ -61,14 +62,16 @@ class BrowserUIContainer extends React.Component {
         });
     }
 
-    getUserAgent() {
+    setUserAgent() {
+        let userAgent = "";
+
         if (this.props.settings.userAgent === true) {
-            const userAgent = _.sample(this.props.userAgents).content;
-            console.log(userAgent);
-            return userAgent;
-        }else{
-            return "";
+            userAgent = _.sample(this.props.userAgents).content
         }
+
+        this.setState({
+            userAgent: userAgent
+        });
     }
 
     render() {
@@ -85,7 +88,7 @@ class BrowserUIContainer extends React.Component {
                     onDonePress={() => navigation.goBack()} />
                 <BrowserBody
                     website={website}
-                    userAgent={this.getUserAgent()}
+                    userAgent={this.state.userAgent}
                     isLoading={this.state.isLoading}
                     onRef={website => this.browser = website}
                     onLoadStart={() => this.handleOnLoadStart()}
