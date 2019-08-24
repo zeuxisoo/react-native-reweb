@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import dateFormat from 'date-fns/format';
 
 import { BrowserHeader, BrowserBody, BrowserFooter } from '../components';
 import { fetchSettings } from '../redux/actions/settings';
@@ -17,7 +18,7 @@ class BrowserUIContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.browser = null,
+        this.browser = null;
 
         this.state = {
             isLoading: true,
@@ -27,6 +28,10 @@ class BrowserUIContainer extends React.Component {
 
         this.props.fetchSettings();
         this.props.fetchUserAgents().then(() => this.setUserAgent());
+    }
+
+    log(message) {
+        console.log(`[Browser] ${message}`);
     }
 
     // Show the custom loading when page load start
@@ -43,7 +48,14 @@ class BrowserUIContainer extends React.Component {
         });
 
         if (this.state.isBrowserAutoRefreshEnabled === true) {
-            this.browser.reload();
+            //
+            const refreshDelaySeconds = this.props.settings.refreshDelaySeconds;
+
+            // Show the current date and refresh delay seconds to console.log
+            this.log(`now: ${dateFormat(new Date, 'yyyy-MM-dd HH:mm:ss')}, refresh delay: ${refreshDelaySeconds}`);
+
+            // Delay start
+            setTimeout(() => this.browser.reload(), refreshDelaySeconds * 1000);
         }
     }
 
@@ -70,6 +82,7 @@ class BrowserUIContainer extends React.Component {
     setUserAgent() {
         let userAgent = "";
 
+        // Set random user agent when custom user agent enabled in settings
         if (this.props.settings.userAgent === true) {
             userAgent = _.sample(this.props.userAgents).content
         }

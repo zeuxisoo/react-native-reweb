@@ -17,7 +17,20 @@ export default schemas = [
             connection.write(() => {
                 connection.create('settings', {
                     'name' : 'user_agent',
-                    'value': '0',
+                    'value': '0',   // only support string type
+                });
+            });
+        },
+    },
+    {
+        schema       : [WebsiteSchema, UserAgentSchema, SettingsSchema],
+        schemaVersion: 3,
+        migration    : () => {},
+        seeder       : (connection) => {
+            connection.write(() => {
+                connection.create('settings', {
+                    'name' : 'refresh_delay_seconds',
+                    'value': '0',   // only support string type
                 });
             });
         },

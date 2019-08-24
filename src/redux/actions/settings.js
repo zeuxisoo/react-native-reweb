@@ -14,7 +14,14 @@ function fetchedSettings(settings) {
     return {
         type    : types.SET_SETTINGS_SUCCESS,
         settings: settings,
-    }
+    };
+}
+
+function setOKRefreshDelaySeconds(seconds) {
+    return {
+        type   : types.SET_REFRESH_DELAY_SECONDS_SUCCESS,
+        seconds: seconds,
+    };
 }
 
 function switchedUserAgent(userAgent) {
@@ -49,9 +56,18 @@ export function fetchSettings() {
                 let settingsObject = {};
 
                 settings.forEach((setting, index) => {
+                    // Get the setting name
                     const name  = _.camelCase(setting.name);
-                    const value = integerStringToNativeBoolean(setting.value);
 
+                    // Get the setting value
+                    // - If the name in true/false conversion table, convert value first before save to new setting table
+                    let value = setting.value;
+
+                    if (_.includes(['user_agent'], setting.name) === true) {
+                        value = integerStringToNativeBoolean(setting.value);
+                    }
+
+                    // Save the converted value to new settings table
                     settingsObject[name] = value;
                 });
 
@@ -59,6 +75,23 @@ export function fetchSettings() {
             })
             .then(settings => {
                 dispatch(fetchedSettings(settings));
+            });
+    }
+}
+
+export function setRefreshDelaySeconds(seconds) {
+    return (dispatch, getState) => {
+        dispatch({ type: types.SET_REFRESH_DELAY_SECONDS });
+
+        SettingsModel
+            .where(`name = $0`, "refresh_delay_seconds")
+            .update({
+                value: seconds.toString(),
+            })
+            .then(settings => {
+                const refreshDelaySecondsValue = settings[0].value
+
+                dispatch(setOKRefreshDelaySeconds(refreshDelaySecondsValue));
             });
     }
 }
