@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, InteractionManager } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { ListItem, Text } from 'react-native-elements';
 import { connect } from 'react-redux';
 
+import { colors } from '../config';
 import { fetchSettings, switchUserAgent } from '../redux/actions/settings';
 
 class SettingsUIContainer extends React.Component {
@@ -25,6 +26,7 @@ class SettingsUIContainer extends React.Component {
     render() {
         return (
             <View style={styles.container}>
+                <Text style={styles.sectionHeader}>Custom User Agent</Text>
                 <ListItem
                     title="Enable User Agent"
                     switch={{
@@ -45,6 +47,14 @@ class SettingsUIContainer extends React.Component {
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'grey'
+    },
+    sectionHeader: {
+        fontSize: 16,
+        color: colors.darkPrimary,
+        backgroundColor: colors.lightTertiary,
+        paddingLeft: 12,
+        paddingTop: 5,
+        paddingBottom: 5,
     }
 });
 
