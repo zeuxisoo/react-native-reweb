@@ -51,7 +51,11 @@ class SettingsUIContainer extends React.Component {
                 <Text style={styles.sectionHeader}>Browser</Text>
                 <ListItem
                     title="Refresh Delay Seconds"
-                    badge={{value: this.props.refreshDelaySeconds}}
+                    badge={{
+                        value: this.props.refreshDelaySeconds,
+                        badgeStyle: styles.numberBadgeBackgroundStyle,
+                        textStyle: styles.numberBadgeTextStyle,
+                    }}
                     onPress={this.handleRefreshDelaySeconds.bind(this)} />
                 <ActionSheet
                     ref={o => this.actionSheet = o}
@@ -90,6 +94,13 @@ const styles = StyleSheet.create({
         paddingLeft: 12,
         paddingTop: 5,
         paddingBottom: 5,
+    },
+    numberBadgeBackgroundStyle: {
+        backgroundColor: 'white',
+    },
+    numberBadgeTextStyle: {
+        color: colors.secondary,
+        fontSize: 14,
     }
 });
 
