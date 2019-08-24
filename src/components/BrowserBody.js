@@ -15,6 +15,7 @@ class BrowserBody extends React.PureComponent {
         onRef: PropTypes.func.isRequired,
         onLoadStart: PropTypes.func.isRequired,
         onLoad: PropTypes.func.isRequired,
+        onNavigationStateChange: PropTypes.func.isRequired,
     }
 
     static defaultProps = {
@@ -41,7 +42,8 @@ class BrowserBody extends React.PureComponent {
                     source={{uri: this.props.website.url}}
                     userAgent={this.props.userAgent}
                     onLoadStart={this.props.onLoadStart}
-                    onLoad={this.props.onLoad} />
+                    onLoad={this.props.onLoad}
+                    onNavigationStateChange={this.props.onNavigationStateChange} />
                 <BrowserBodySpinner isLoading={this.props.isLoading} />
             </View>
         );

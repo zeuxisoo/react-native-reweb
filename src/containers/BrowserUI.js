@@ -47,6 +47,11 @@ class BrowserUIContainer extends React.Component {
         }
     }
 
+    // Write the navigation state to console
+    handleOnNavigationStateChange(navState) {
+        console.log(navState);
+    }
+
     //
     enableBrowserAutoRefresh() {
         this.setState({
@@ -92,7 +97,8 @@ class BrowserUIContainer extends React.Component {
                     isLoading={this.state.isLoading}
                     onRef={website => this.browser = website}
                     onLoadStart={() => this.handleOnLoadStart()}
-                    onLoad={() => this.handleOnLoad()} />
+                    onLoad={() => this.handleOnLoad()}
+                    onNavigationStateChange={navState => this.handleOnNavigationStateChange(navState)} />
                 <BrowserFooter
                     isBrowserAutoRefreshEnabled={this.state.isBrowserAutoRefreshEnabled}
                     onBackPress={() => this.browser.goBack()}
