@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "faker": "https://github.com/Marak/faker.js#a9a11ee55ae1ae528ffc14c869a4c8353e2ba419",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "0.59.5",
@@ -20,11 +20,11 @@
     "react-navigation": "^3.9.1",
     "react-navigation-header-buttons": "^2.3.1",
     "react-redux": "^7.0.3",
-    "realm": "^2.26.1",
-    "redux": "^4.0.1",
+    "realm": "^2.29.2",
+    "redux": "^4.0.4",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "validator": "^10.11.0"
+    "validator": "^11.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
