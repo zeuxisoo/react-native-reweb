@@ -121,9 +121,9 @@ const mapStateToProps = state => ({
     userAgents: state.userAgent.userAgents,
 });
 
-const mapDispatchToProps = dispath => ({
-    fetchSettings: () => dispath(fetchSettings()),
-    fetchUserAgents: () => dispath(fetchUserAgents()),
+const mapDispatchToProps = dispatch => ({
+    fetchSettings: () => dispatch(fetchSettings()),
+    fetchUserAgents: () => dispatch(fetchUserAgents()),
 });
 
 const BrowserUI = connect(mapStateToProps, mapDispatchToProps)(BrowserUIContainer);
