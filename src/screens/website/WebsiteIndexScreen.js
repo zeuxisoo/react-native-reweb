@@ -8,6 +8,11 @@ class WebsiteIndexScreen extends React.Component {
     static navigationOptions = ({ navigation }) => {
         return {
             title: "Home",
+            headerLeft: (
+                <HeaderMaterialButtons>
+                    <HeaderMaterialItem title="menu" iconName="reorder" onPress={() => navigation.toggleDrawer()} />
+                </HeaderMaterialButtons>
+            ),
             headerRight: (
                 <HeaderMaterialButtons>
                     <HeaderMaterialItem title="add" iconName="add" onPress={() => navigation.navigate('WebsiteCreateScreen')} />
